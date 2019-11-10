@@ -1,1 +1,60 @@
-﻿
+﻿@if (Session["username"] == null)
+{
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+            <a href="#" data-target="menu-responsive" class="brand-logo"></a>
+            <a> @Html.ActionLink("Picado Dental Center", "Index", "Home", new { area = "" }, new { @class = "brand-logo center" })</a>
+        </div>
+    </nav>
+}
+
+
+@if (Session["username"] != null)
+{
+    <nav>
+        <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <div class="nav-wrapper">
+            <ul id="dropdown-contactos" class="dropdown-content">
+                <li>@Html.ActionLink("Nuevo Contacto", "NewCustomer", "Customer")</li>
+                <li>@Html.ActionLink("Mis contactos", "CustomerView", "Customer")</li>
+            </ul>
+            <ul id="dropdown-cotizaciones" class="dropdown-content">
+                <li>@Html.ActionLink("Crear Cotización", "NewQuotation", "Quotation")</li>
+                <li>@Html.ActionLink("Cotizaciones", "QuotationList", "Quotation")</li>
+            </ul>
+            <ul id="dropdown-tareas" class="dropdown-content">
+                <li>@Html.ActionLink("Nueva Tarea", "NewTask", "Task")</li>
+                <li>@Html.ActionLink("Lista de Tareas", "TaskList", "Task")</li>
+            </ul>
+
+            <div class="nav-wrapper teal">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="teal lighten-1 dropdown-trigger" data-target="dropdown-contactos">Contactos<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="teal lighten-2 dropdown-trigger" data-target="dropdown-tareas">Tareas<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="teal lighten-3 dropdown-trigger" data-target="dropdown-cotizaciones">Cotizaciones<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li class="teal lighten-4">@Html.ActionLink("Cerrar Sesión", "LogOut", "Admin")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ul id="dropdown-contactos-mov" class="dropdown-content">
+        <li class="teal lighten-1">@Html.ActionLink("Nuevo Contacto", "NewCustomer", "Customer")</li>
+        <li class="teal lighten-1">@Html.ActionLink("Mis contactos", "CustomerView", "Customer")</li>
+        <li class="teal lighten-1">@Html.ActionLink("Nueva Tarea", "NewTask", "Task")</li>
+        <li class="teal lighten-1">@Html.ActionLink("Lista de Tareas", "TaskList", "Task")</li>
+    </ul>
+    <ul id="dropdown-tareas-mov" class="dropdown-content">
+        <li class="teal lighten-2">@Html.ActionLink("Nueva Tarea", "NewTask", "Task")</li>
+        <li class="teal lighten-2">@Html.ActionLink("Lista de Tareas", "TaskList", "Task")</li>
+    </ul>
+    <ul id="dropdown-cotizaciones-mov" class="dropdown-content">
+        <li class="teal lighten-3">@Html.ActionLink("Crear Cotización", "NewQuotation", "Quotation")</li>
+        <li class="teal lighten-3">@Html.ActionLink("Cotizaciones", "QuotationList", "Quotation")</li>
+    </ul>
+    <ul class="sidenav white-text teal lighten-5" id="menu-responsive">
+        <li><a class="teal lighten-1 dropdown-trigger" href="#!" data-target="dropdown-contactos-mov">Contactos<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="teal lighten-2 dropdown-trigger" href="#!" data-target="dropdown-tareas-mov">Tareas<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="teal lighten-3 dropdown-trigger" href="#!" data-target="dropdown-cotizaciones-mov">Cotizaciones<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li class="teal lighten-4 active">@Html.ActionLink("Cerrar Sesión", "LogOut", "Admin")</li>
+    </ul>
+}

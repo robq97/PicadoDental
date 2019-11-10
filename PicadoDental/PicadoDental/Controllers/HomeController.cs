@@ -13,18 +13,34 @@ namespace PicadoDental.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //[HttpPost]
+        //public ActionResult Authentication(Admin login)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        BostreamEntities1 db = new BostreamEntities1();
+        //        List<Admin> adminList = db.Admins.ToList();
 
-            return View();
-        }
+        //        var user = (from userlist in adminList
+        //                    where userlist.username == login.username && userlist.password == login.password
+        //                    select new
+        //                    {
+        //                        userlist.AdminId,
+        //                        userlist.username
+        //                    }).ToList();
+        //        if (user.FirstOrDefault() != null)
+        //        {
+        //            Session["UserName"] = user.FirstOrDefault().username;
+        //            Session["UserID"] = user.FirstOrDefault().AdminId;
+        //            return RedirectToAction("NewCustomer", "Customer");
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("LogIn", "Admin");
+        //        }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        //    }
+        //    return new EmptyResult();
+        //}
     }
 }
