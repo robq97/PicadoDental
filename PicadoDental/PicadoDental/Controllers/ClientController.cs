@@ -13,5 +13,11 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
+        // GET: Cliente
+        public ActionResult ClientList()
+        {
+            return View();
+        }
+
     }
 }
