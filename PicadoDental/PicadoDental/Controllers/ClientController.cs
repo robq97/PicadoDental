@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace PicadoDental.Controllers
 {
-    public class HomeController : Controller
+    public class ClientController : Controller
     {
-        public ActionResult Index()
+        // GET: Cliente
+        public ActionResult NewClient()
         {
             return View();
         }

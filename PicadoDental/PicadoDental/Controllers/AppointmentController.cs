@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace PicadoDental.Controllers
 {
-    public class HomeController : Controller
+    public class AppointmentController : Controller
     {
-        public ActionResult Index()
+        // GET: Appointment
+        public ActionResult NewAppointment()
         {
             return View();
         }
+
+
     }
 }
