@@ -1,4 +1,4 @@
-﻿@if (Session["username"] == null)
+﻿@*@if (Session["username"] == null)
 {
     <nav>
         <div class="nav-wrapper blue darken-3">
@@ -6,10 +6,10 @@
             <a> @Html.ActionLink("Picado Dental Center", "Index", "Home", new { area = "" }, new { @class = "brand-logo center" })</a>
         </div>
     </nav>
-}
+}*@
 
 
-@if (Session["username"] != null)
+@if (Session["username"] == null)
 {
     <nav>
         <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -22,26 +22,27 @@
                 <li>@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
                 <li>@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
             </ul>
-            <div class="nav-wrapper teal">
+            <div class="nav-wrapper blue darken-3">
+                <a> @Html.ActionLink("Picado Dental Center", "Index", "Home", new { area = "" }, new { @class = "brand-logo center" })</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="teal lighten-1 dropdown-trigger" data-target="dropdown-contactos">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a class="teal lighten-2 dropdown-trigger" data-target="dropdown-tareas">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li class="teal lighten-4">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
+                    <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-appointments">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
                 </ul>
             </div>
         </div>
     </nav>
     <ul id="dropdown-clients-mov" class="dropdown-content">
-        <li class="teal lighten-1">@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
-        <li class="teal lighten-1">@Html.ActionLink("Nuevo cliente", "NewClient", "Client")</li>
+        <li class="blue darken-3">@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
+        <li class="blue darken-3">@Html.ActionLink("Nuevo cliente", "NewClient", "Client")</li>
     </ul>
     <ul id="dropdown-appointments-mov" class="dropdown-content">
-        <li class="teal lighten-3">@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
-        <li class="teal lighten-3">@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
+        <li class="blue darken-3">@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
+        <li class="blue darken-3">@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
     </ul>
-    <ul class="sidenav white-text teal lighten-5" id="menu-responsive">
-        <li><a class="teal lighten-1 dropdown-trigger" href="#!" data-target="dropdown-clients-mov">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="teal lighten-3 dropdown-trigger" href="#!" data-target="dropdown-appointments-mov">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li class="teal lighten-4 active">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
+    <ul class="sidenav white-text blue darken-1" id="menu-responsive">
+        <li><a class="blue darken-3 white-text" href="#!" data-target="dropdown-clients-mov">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="blue darken-3 white-text" href="#!" data-target="dropdown-appointments-mov">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li class="red darken-2 white-text">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
     </ul>
 }
