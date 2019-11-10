@@ -16,7 +16,9 @@ namespace PicadoDental.Controllers
         // GET: Cliente
         public ActionResult ClientList()
         {
-            return View();
+            EF_PicadoDental.EF_PicadoDentalSoapClient WS = new EF_PicadoDental.EF_PicadoDentalSoapClient();
+            var list = WS.ClientList();
+            return View(list);
         }
 
     }

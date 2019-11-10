@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,6 +122,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\EF_PicadoDental\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -130,10 +137,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\EF_PicadoDental\EF_PicadoDental.disco" />
+    <None Include="Connected Services\EF_PicadoDental\configuration91.svcinfo" />
+    <None Include="Connected Services\EF_PicadoDental\configuration.svcinfo" />
+    <Content Include="Connected Services\EF_PicadoDental\PicadoDental.EF_PicadoDental.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental\PicadoDental.EF_PicadoDental.ClientListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\EF_PicadoDental\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="favicon.ico" />
     <Content Include="Public\CSS\materialize.css" />
     <Content Include="Public\CSS\materialize.min.css" />
     <Content Include="Global.asax" />
+    <None Include="Connected Services\EF_PicadoDental\EF_PicadoDental.wsdl" />
     <None Include="Public\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Public\IMG\backgroundlogin2.jpg" />
     <Content Include="Public\Scripts\jquery-3.3.1.js" />
@@ -176,6 +197,12 @@
     <None Include="packages.config" />
     <Content Include="Public\Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Public\Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\EF_PicadoDental\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
