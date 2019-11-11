@@ -6,20 +6,15 @@ using System.Web.Mvc;
 
 namespace PicadoDental.Controllers
 {
-    public class ClientController : Controller
+    public class CitaController : Controller
     {
         // GET: Cliente
-        public ActionResult NewClient()
+        public ActionResult NewCita()
         {
             return View();
         }
 
-        public ActionResult ClientList()
-        {
-            return View();
-        }
-
-        public ActionResult Client()
+        public ActionResult CitaList()
         {
             return View();
         }

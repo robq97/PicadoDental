@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -163,9 +164,11 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Appointment\NewAppointment.cshtml" />
-    <Content Include="Views\Appointment\AppoitmentList.cshtml" />
+    <Content Include="Views\Appointment\AppointmentList.cshtml" />
     <Content Include="Views\Client\NewClient.cshtml" />
     <Content Include="Views\Client\ClientList.cshtml" />
+    <Content Include="Views\Appointment\Appointment.cshtml" />
+    <Content Include="Views\Client\Client.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

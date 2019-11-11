@@ -3,5 +3,136 @@
     ViewBag.Title = "ClientList";
 }
 
-<h2>ClientList</h2>
+<style>
+    .clientTableCell > th {
+        border-right: solid 1px #2E7D32;
+    }
 
+    .clientTableCell > td {
+        border-right: solid 1px #2E7D32;
+        max-width: 1px;
+    }
+
+    .clientTableCell > td > i {
+        cursor: pointer;
+    }
+
+    .clientTableCell :last-child {
+        border: none;
+    }
+</style>
+<div class="container body-content">
+    <div class="row" style="margin-top: 5%">
+        <div class="card green darken-3 white-text">
+            <div class="center">
+                <span class="card-title" style="font-size: 55px">Clientes</span>
+            </div>
+            <table class="white-text centered responsive-table z-depth-4">
+                <thead class="z-depth-1 green lighten-2">
+                    <tr class="clientTableCell">
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Género</th>
+                        <th>Editar</th>
+                        <th>Citas</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody class="green lighten-5 black-text">
+                    @*@if (Session["UserType"] != null && Session["UserType"].Equals("Admin"))
+                    {
+                        foreach (var p in Model)
+                        {
+                            <tr class="clientTableCell">
+                                <td>@p.PagoID</td>
+                                <td>@p.Cedula</td>
+                                <td>@p.Nombre</td>
+                                <td>@p.DescTipoSuscripcion</td>
+                                <td>
+                                    <a class="btn-floating  green darken-3">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn-floating  green darken-3">
+                                        <i class="material-icons right">format_list_bulleted</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn-floating  green darken-3">
+                                        <i class="material-icons">details</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }*@
+                    <tr class="clientTableCell">
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>asdn</td>
+                        <td>
+                            <a class="btn-floating  green darken-3">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Appointment/AppointmentList?clientId=1" class="btn-floating  green darken-3">
+                                <i class="material-icons right">format_list_bulleted</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Client/Client/1" class="btn-floating  green darken-3">
+                                <i class="material-icons">details</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="clientTableCell">
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>asdn</td>
+                        <td>
+                            <a class="btn-floating  green darken-3">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Appointment/AppointmentList?clientId=2" class="btn-floating  green darken-3">
+                                <i class="material-icons right">format_list_bulleted</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Client/Client/2" class="btn-floating  green darken-3">
+                                <i class="material-icons">details</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="clientTableCell">
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>asdn</td>
+                        <td>
+                            <a class="btn-floating  green darken-3">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Appointment/AppointmentList?clientId=3" class="btn-floating  green darken-3">
+                                <i class="material-icons right">format_list_bulleted</i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Client/Client/3" class="btn-floating  green darken-3">
+                                <i class="material-icons">details</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     
+    </div>
+</div>

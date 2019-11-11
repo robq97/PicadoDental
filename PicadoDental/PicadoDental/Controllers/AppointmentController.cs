@@ -14,6 +14,14 @@ namespace PicadoDental.Controllers
             return View();
         }
 
+        public ActionResult AppointmentList()
+        {
+            return View();
+        }
 
+        public ActionResult Appointment()
+        {
+            return View();
+        }
     }
 }
