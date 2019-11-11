@@ -13,7 +13,7 @@ namespace PicadoDental.Controllers
         {
             if (Session["username"] != null)
             {
-                return RedirectToAction("NewCustomer", "Customer");
+                return RedirectToAction("NewClient", "Client");
             }
             return View();
         }
@@ -36,34 +36,18 @@ namespace PicadoDental.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Authentication(Admin login)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        BostreamEntities1 db = new BostreamEntities1();
-        //        List<Admin> adminList = db.Admins.ToList();
-
-        //        var user = (from userlist in adminList
-        //                    where userlist.username == login.username && userlist.password == login.password
-        //                    select new
-        //                    {
-        //                        userlist.AdminId,
-        //                        userlist.username
-        //                    }).ToList();
-        //        if (user.FirstOrDefault() != null)
-        //        {
-        //            Session["UserName"] = user.FirstOrDefault().username;
-        //            Session["UserID"] = user.FirstOrDefault().AdminId;
-        //            return RedirectToAction("NewCustomer", "Customer");
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("LogIn", "Admin");
-        //        }
-
-        //    }
-        //    return new EmptyResult();
-        //}
+        public ActionResult  Authentication(string usuario, string password)
+        {
+            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+            if (WS.LogIn(usuario, password) == true)
+            {
+                Session["username"] = usuario.FirstOrDefault();
+                return RedirectToAction("NewClient", "Client");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

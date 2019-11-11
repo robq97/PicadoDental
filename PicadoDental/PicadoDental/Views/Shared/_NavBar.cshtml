@@ -1,4 +1,4 @@
-﻿@*@if (Session["username"] == null)
+﻿@if (Session["username"] == null)
 {
     <nav>
         <div class="nav-wrapper blue darken-3">
@@ -6,14 +6,14 @@
             <a> @Html.ActionLink("Picado Dental Center", "Index", "Home", new { area = "" }, new { @class = "brand-logo center" })</a>
         </div>
     </nav>
-}*@
+}
 
 <style>
     .hotfixDropdownItems {
         min-width: 150px;
     }
 </style>
-@if (Session["username"] == null)
+@if (Session["username"] != null)
 {
     <nav>
         <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -27,7 +27,7 @@
                 <li>@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
             </ul>
             <div class="nav-wrapper blue darken-3">
-                <a> @Html.ActionLink("Picado Dental Center", "Index", "Home", new { area = "" }, new { @class = "brand-logo center" })</a>
+                <a> @Html.ActionLink("Picado Dental Center", "NewClient", "Client", new { area = "" }, new { @class = "brand-logo center" })</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-appointments">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
