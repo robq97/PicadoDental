@@ -10,7 +10,7 @@
 
 <style>
     .hotfixDropdownItems {
-        min-width: 150px;
+        min-width: 160px;
     }
 </style>
 @if (Session["TipoUsuario"] != null)
@@ -21,6 +21,10 @@
                 <li>@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
                 <li>@Html.ActionLink("Nuevo cliente", "NewClient", "Client")</li>
             </ul>
+            <ul id="dropdown-clients" class="dropdown-content hotfixDropdownItems">
+                <li>@Html.ActionLink("Lista de doctores", "DoctorList", "Doctor")</li>
+                <li>@Html.ActionLink("Nuevo doctor", "NewDoctor", "Doctor")</li>
+            </ul>
             <ul id="dropdown-appointments" class="dropdown-content hotfixDropdownItems">
                 <li>@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
                 <li>@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
@@ -29,6 +33,7 @@
                 <a> @Html.ActionLink("Picado Dental Center", "NewClient", "Client", new { area = "" }, new { @class = "brand-logo center" })</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Doctores<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-appointments">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
                 </ul>
