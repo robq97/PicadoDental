@@ -1,4 +1,4 @@
-﻿@if (Session["username"] == null)
+﻿@if (Session["TipoUsuario"] == null)
 {
     <nav>
         <div class="nav-wrapper blue darken-3">
@@ -13,10 +13,9 @@
         min-width: 150px;
     }
 </style>
-@if (Session["username"] != null)
+@if (Session["TipoUsuario"] != null)
 {
     <nav>
-        <a href="#" data-target="menu-responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <div class="nav-wrapper">
             <ul id="dropdown-clients" class="dropdown-content hotfixDropdownItems">
                 <li>@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
@@ -36,17 +35,12 @@
             </div>
         </div>
     </nav>
-    <ul id="dropdown-clients-mov" class="dropdown-content">
-        <li class="blue darken-3">@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
-        <li class="blue darken-3">@Html.ActionLink("Nuevo cliente", "NewClient", "Client")</li>
-    </ul>
-    <ul id="dropdown-appointments-mov" class="dropdown-content">
-        <li class="blue darken-3">@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
-        <li class="blue darken-3">@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
-    </ul>
-    <ul class="sidenav white-text blue darken-1" id="menu-responsive">
-        <li><a class="blue darken-3 white-text" href="#!" data-target="dropdown-clients-mov">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="blue darken-3 white-text" href="#!" data-target="dropdown-appointments-mov">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li class="red darken-2 white-text">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
-    </ul>
 }
+@*@if (Session["TipoUsuario"].Equals("Doctor"))
+{
+
+}
+@if (Session["TipoUsuario"].Equals("Admin"))
+{
+
+}*@

@@ -13,10 +13,15 @@
       <s:element name="LogInResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="LogInResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="LogInResult" type="tns:ArrayOfString" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ClientList">
         <s:complexType />
       </s:element>
@@ -34,8 +39,8 @@
       </s:complexType>
       <s:complexType name="Cliente">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ClienteId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="PersonaId" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Citas" type="tns:ArrayOfCita" />
           <s:element minOccurs="0" maxOccurs="1" name="Persona" type="tns:Persona" />
         </s:sequence>
@@ -47,81 +52,65 @@
       </s:complexType>
       <s:complexType name="Cita">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="CitaId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="ClienteId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="DoctorId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="FechaHora" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CitaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaHora" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescCita" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Comentarios" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
-          <s:element minOccurs="0" maxOccurs="1" name="Doctor" type="tns:Doctor" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Doctor">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="DoctorId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="PersonaId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="UsuarioId" type="s:short" />
-          <s:element minOccurs="0" maxOccurs="1" name="Especialidad" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Citas" type="tns:ArrayOfCita" />
-          <s:element minOccurs="0" maxOccurs="1" name="Persona" type="tns:Persona" />
-          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="tns:Usuario" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Persona">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="PersonaId" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="PrimerApellido" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="SegundoApellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CredencialID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoCuentaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactoID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clientes" type="tns:ArrayOfCliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contacto" type="tns:Contacto" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credencial" type="tns:Credencial" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="tns:Genero" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoCuenta" type="tns:TipoCuenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Contacto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ContactoID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="GeneroId" nillable="true" type="s:short" />
-          <s:element minOccurs="0" maxOccurs="1" name="Admins" type="tns:ArrayOfAdmin" />
-          <s:element minOccurs="0" maxOccurs="1" name="Clientes" type="tns:ArrayOfCliente" />
-          <s:element minOccurs="0" maxOccurs="1" name="Doctors" type="tns:ArrayOfDoctor" />
-          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="tns:Genero" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfAdmin">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Admin" nillable="true" type="tns:Admin" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Admin">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="AdminId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="PersonaId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="UsuarioId" type="s:short" />
-          <s:element minOccurs="0" maxOccurs="1" name="Persona" type="tns:Persona" />
-          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="tns:Usuario" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Usuario">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="UsuarioId" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="PersonaId" nillable="true" type="s:short" />
-          <s:element minOccurs="0" maxOccurs="1" name="Usuario1" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Contrasena" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Admins" type="tns:ArrayOfAdmin" />
-          <s:element minOccurs="0" maxOccurs="1" name="Doctors" type="tns:ArrayOfDoctor" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfDoctor">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Doctor" nillable="true" type="tns:Doctor" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Genero">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="GeneroId" type="s:short" />
-          <s:element minOccurs="0" maxOccurs="1" name="Descipcion" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Personas" type="tns:ArrayOfPersona" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfPersona">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Persona" nillable="true" type="tns:Persona" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Credencial">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CredencialID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Personas" type="tns:ArrayOfPersona" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Genero">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescGenero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Personas" type="tns:ArrayOfPersona" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoCuenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TipoCuentaID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescTipoCuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Personas" type="tns:ArrayOfPersona" />
         </s:sequence>
       </s:complexType>
       <s:element name="NewClient">
@@ -132,7 +121,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="segundoApellido" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -142,10 +131,9 @@
       <s:element name="ModifyClient">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="personaId" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="personaId" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:unsignedByte" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -155,9 +143,9 @@
       <s:element name="NewAppointment">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="clienteId" type="s:short" />
-            <s:element minOccurs="1" maxOccurs="1" name="doctorId" type="s:short" />
-            <s:element minOccurs="1" maxOccurs="1" name="fechaHora" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="clienteId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="doctorId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaHora" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="comentarios" type="s:string" />
           </s:sequence>
@@ -169,9 +157,9 @@
       <s:element name="ModifyAppointment">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="citaId" type="s:short" />
-            <s:element minOccurs="1" maxOccurs="1" name="doctorId" type="s:short" />
-            <s:element minOccurs="1" maxOccurs="1" name="fechaHora" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="citaId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="doctorId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaHora" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="comentarios" type="s:string" />
           </s:sequence>

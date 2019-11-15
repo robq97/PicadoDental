@@ -15,6 +15,13 @@ namespace PicadoDental.EF_PicadoDental_WS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Cliente", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class Cliente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -22,9 +29,9 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short ClienteIdField;
+        private int ClienteIDField;
         
-        private short PersonaIdField;
+        private int PersonaIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PicadoDental.EF_PicadoDental_WS.Cita[] CitasField;
@@ -43,27 +50,27 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short ClienteId {
+        public int ClienteID {
             get {
-                return this.ClienteIdField;
+                return this.ClienteIDField;
             }
             set {
-                if ((this.ClienteIdField.Equals(value) != true)) {
-                    this.ClienteIdField = value;
-                    this.RaisePropertyChanged("ClienteId");
+                if ((this.ClienteIDField.Equals(value) != true)) {
+                    this.ClienteIDField = value;
+                    this.RaisePropertyChanged("ClienteID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short PersonaId {
+        public int PersonaID {
             get {
-                return this.PersonaIdField;
+                return this.PersonaIDField;
             }
             set {
-                if ((this.PersonaIdField.Equals(value) != true)) {
-                    this.PersonaIdField = value;
-                    this.RaisePropertyChanged("PersonaId");
+                if ((this.PersonaIDField.Equals(value) != true)) {
+                    this.PersonaIDField = value;
+                    this.RaisePropertyChanged("PersonaID");
                 }
             }
         }
@@ -113,7 +120,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short PersonaIdField;
+        private int PersonaIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
@@ -124,25 +131,28 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SegundoApellidoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelefonoField;
+        private int GeneroIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CorreoField;
+        private System.Nullable<int> CredencialIDField;
         
-        private System.Nullable<short> GeneroIdField;
+        private int TipoCuentaIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Admin[] AdminsField;
+        private int ContactoIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PicadoDental.EF_PicadoDental_WS.Cliente[] ClientesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Doctor[] DoctorsField;
+        private PicadoDental.EF_PicadoDental_WS.Contacto ContactoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PicadoDental.EF_PicadoDental_WS.Credencial CredencialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PicadoDental.EF_PicadoDental_WS.Genero GeneroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PicadoDental.EF_PicadoDental_WS.TipoCuenta TipoCuentaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -155,14 +165,14 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short PersonaId {
+        public int PersonaID {
             get {
-                return this.PersonaIdField;
+                return this.PersonaIDField;
             }
             set {
-                if ((this.PersonaIdField.Equals(value) != true)) {
-                    this.PersonaIdField = value;
-                    this.RaisePropertyChanged("PersonaId");
+                if ((this.PersonaIDField.Equals(value) != true)) {
+                    this.PersonaIDField = value;
+                    this.RaisePropertyChanged("PersonaID");
                 }
             }
         }
@@ -206,54 +216,54 @@ namespace PicadoDental.EF_PicadoDental_WS {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string Telefono {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int GeneroID {
             get {
-                return this.TelefonoField;
+                return this.GeneroIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
-                    this.TelefonoField = value;
-                    this.RaisePropertyChanged("Telefono");
+                if ((this.GeneroIDField.Equals(value) != true)) {
+                    this.GeneroIDField = value;
+                    this.RaisePropertyChanged("GeneroID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string Correo {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<int> CredencialID {
             get {
-                return this.CorreoField;
+                return this.CredencialIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
-                    this.CorreoField = value;
-                    this.RaisePropertyChanged("Correo");
+                if ((this.CredencialIDField.Equals(value) != true)) {
+                    this.CredencialIDField = value;
+                    this.RaisePropertyChanged("CredencialID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public System.Nullable<short> GeneroId {
+        public int TipoCuentaID {
             get {
-                return this.GeneroIdField;
+                return this.TipoCuentaIDField;
             }
             set {
-                if ((this.GeneroIdField.Equals(value) != true)) {
-                    this.GeneroIdField = value;
-                    this.RaisePropertyChanged("GeneroId");
+                if ((this.TipoCuentaIDField.Equals(value) != true)) {
+                    this.TipoCuentaIDField = value;
+                    this.RaisePropertyChanged("TipoCuentaID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public PicadoDental.EF_PicadoDental_WS.Admin[] Admins {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public int ContactoID {
             get {
-                return this.AdminsField;
+                return this.ContactoIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.AdminsField, value) != true)) {
-                    this.AdminsField = value;
-                    this.RaisePropertyChanged("Admins");
+                if ((this.ContactoIDField.Equals(value) != true)) {
+                    this.ContactoIDField = value;
+                    this.RaisePropertyChanged("ContactoID");
                 }
             }
         }
@@ -272,19 +282,32 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
-        public PicadoDental.EF_PicadoDental_WS.Doctor[] Doctors {
+        public PicadoDental.EF_PicadoDental_WS.Contacto Contacto {
             get {
-                return this.DoctorsField;
+                return this.ContactoField;
             }
             set {
-                if ((object.ReferenceEquals(this.DoctorsField, value) != true)) {
-                    this.DoctorsField = value;
-                    this.RaisePropertyChanged("Doctors");
+                if ((object.ReferenceEquals(this.ContactoField, value) != true)) {
+                    this.ContactoField = value;
+                    this.RaisePropertyChanged("Contacto");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=10)]
+        public PicadoDental.EF_PicadoDental_WS.Credencial Credencial {
+            get {
+                return this.CredencialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CredencialField, value) != true)) {
+                    this.CredencialField = value;
+                    this.RaisePropertyChanged("Credencial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=11)]
         public PicadoDental.EF_PicadoDental_WS.Genero Genero {
             get {
                 return this.GeneroField;
@@ -293,6 +316,19 @@ namespace PicadoDental.EF_PicadoDental_WS {
                 if ((object.ReferenceEquals(this.GeneroField, value) != true)) {
                     this.GeneroField = value;
                     this.RaisePropertyChanged("Genero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=12)]
+        public PicadoDental.EF_PicadoDental_WS.TipoCuenta TipoCuenta {
+            get {
+                return this.TipoCuentaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoCuentaField, value) != true)) {
+                    this.TipoCuentaField = value;
+                    this.RaisePropertyChanged("TipoCuenta");
                 }
             }
         }
@@ -316,25 +352,22 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short CitaIdField;
+        private int CitaIDField;
         
-        private short ClienteIdField;
+        private int ClienteIDField;
         
-        private short DoctorIdField;
+        private int PersonaIDField;
         
-        private System.Nullable<System.DateTime> FechaHoraField;
+        private System.DateTime FechaHoraField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescripcionField;
+        private string DescCitaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ComentariosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PicadoDental.EF_PicadoDental_WS.Cliente ClienteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Doctor DoctorField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -347,46 +380,46 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short CitaId {
+        public int CitaID {
             get {
-                return this.CitaIdField;
+                return this.CitaIDField;
             }
             set {
-                if ((this.CitaIdField.Equals(value) != true)) {
-                    this.CitaIdField = value;
-                    this.RaisePropertyChanged("CitaId");
+                if ((this.CitaIDField.Equals(value) != true)) {
+                    this.CitaIDField = value;
+                    this.RaisePropertyChanged("CitaID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short ClienteId {
+        public int ClienteID {
             get {
-                return this.ClienteIdField;
+                return this.ClienteIDField;
             }
             set {
-                if ((this.ClienteIdField.Equals(value) != true)) {
-                    this.ClienteIdField = value;
-                    this.RaisePropertyChanged("ClienteId");
+                if ((this.ClienteIDField.Equals(value) != true)) {
+                    this.ClienteIDField = value;
+                    this.RaisePropertyChanged("ClienteID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short DoctorId {
+        public int PersonaID {
             get {
-                return this.DoctorIdField;
+                return this.PersonaIDField;
             }
             set {
-                if ((this.DoctorIdField.Equals(value) != true)) {
-                    this.DoctorIdField = value;
-                    this.RaisePropertyChanged("DoctorId");
+                if ((this.PersonaIDField.Equals(value) != true)) {
+                    this.PersonaIDField = value;
+                    this.RaisePropertyChanged("PersonaID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<System.DateTime> FechaHora {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.DateTime FechaHora {
             get {
                 return this.FechaHoraField;
             }
@@ -399,14 +432,14 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string Descripcion {
+        public string DescCita {
             get {
-                return this.DescripcionField;
+                return this.DescCitaField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
-                    this.DescripcionField = value;
-                    this.RaisePropertyChanged("Descripcion");
+                if ((object.ReferenceEquals(this.DescCitaField, value) != true)) {
+                    this.DescCitaField = value;
+                    this.RaisePropertyChanged("DescCita");
                 }
             }
         }
@@ -437,15 +470,94 @@ namespace PicadoDental.EF_PicadoDental_WS {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public PicadoDental.EF_PicadoDental_WS.Doctor Doctor {
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Contacto", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Contacto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int ContactoIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelefonoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PicadoDental.EF_PicadoDental_WS.Persona[] PersonasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
-                return this.DoctorField;
+                return this.extensionDataField;
             }
             set {
-                if ((object.ReferenceEquals(this.DoctorField, value) != true)) {
-                    this.DoctorField = value;
-                    this.RaisePropertyChanged("Doctor");
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ContactoID {
+            get {
+                return this.ContactoIDField;
+            }
+            set {
+                if ((this.ContactoIDField.Equals(value) != true)) {
+                    this.ContactoIDField = value;
+                    this.RaisePropertyChanged("ContactoID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Correo {
+            get {
+                return this.CorreoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
+                    this.CorreoField = value;
+                    this.RaisePropertyChanged("Correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public PicadoDental.EF_PicadoDental_WS.Persona[] Personas {
+            get {
+                return this.PersonasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PersonasField, value) != true)) {
+                    this.PersonasField = value;
+                    this.RaisePropertyChanged("Personas");
                 }
             }
         }
@@ -462,30 +574,23 @@ namespace PicadoDental.EF_PicadoDental_WS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Doctor", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Credencial", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class Doctor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Credencial : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short DoctorIdField;
-        
-        private short PersonaIdField;
-        
-        private short UsuarioIdField;
+        private int CredencialIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EspecialidadField;
+        private string UsuarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Cita[] CitasField;
+        private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Persona PersonaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Usuario UsuarioField;
+        private PicadoDental.EF_PicadoDental_WS.Persona[] PersonasField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -498,85 +603,20 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short DoctorId {
+        public int CredencialID {
             get {
-                return this.DoctorIdField;
+                return this.CredencialIDField;
             }
             set {
-                if ((this.DoctorIdField.Equals(value) != true)) {
-                    this.DoctorIdField = value;
-                    this.RaisePropertyChanged("DoctorId");
+                if ((this.CredencialIDField.Equals(value) != true)) {
+                    this.CredencialIDField = value;
+                    this.RaisePropertyChanged("CredencialID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short PersonaId {
-            get {
-                return this.PersonaIdField;
-            }
-            set {
-                if ((this.PersonaIdField.Equals(value) != true)) {
-                    this.PersonaIdField = value;
-                    this.RaisePropertyChanged("PersonaId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short UsuarioId {
-            get {
-                return this.UsuarioIdField;
-            }
-            set {
-                if ((this.UsuarioIdField.Equals(value) != true)) {
-                    this.UsuarioIdField = value;
-                    this.RaisePropertyChanged("UsuarioId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Especialidad {
-            get {
-                return this.EspecialidadField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EspecialidadField, value) != true)) {
-                    this.EspecialidadField = value;
-                    this.RaisePropertyChanged("Especialidad");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public PicadoDental.EF_PicadoDental_WS.Cita[] Citas {
-            get {
-                return this.CitasField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CitasField, value) != true)) {
-                    this.CitasField = value;
-                    this.RaisePropertyChanged("Citas");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public PicadoDental.EF_PicadoDental_WS.Persona Persona {
-            get {
-                return this.PersonaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PersonaField, value) != true)) {
-                    this.PersonaField = value;
-                    this.RaisePropertyChanged("Persona");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public PicadoDental.EF_PicadoDental_WS.Usuario Usuario {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Usuario {
             get {
                 return this.UsuarioField;
             }
@@ -588,125 +628,28 @@ namespace PicadoDental.EF_PicadoDental_WS {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private short UsuarioIdField;
-        
-        private System.Nullable<short> PersonaIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Usuario1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContrasenaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Admin[] AdminsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Doctor[] DoctorsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short UsuarioId {
-            get {
-                return this.UsuarioIdField;
-            }
-            set {
-                if ((this.UsuarioIdField.Equals(value) != true)) {
-                    this.UsuarioIdField = value;
-                    this.RaisePropertyChanged("UsuarioId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public System.Nullable<short> PersonaId {
-            get {
-                return this.PersonaIdField;
-            }
-            set {
-                if ((this.PersonaIdField.Equals(value) != true)) {
-                    this.PersonaIdField = value;
-                    this.RaisePropertyChanged("PersonaId");
-                }
-            }
-        }
-        
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Usuario1 {
+        public string Password {
             get {
-                return this.Usuario1Field;
+                return this.PasswordField;
             }
             set {
-                if ((object.ReferenceEquals(this.Usuario1Field, value) != true)) {
-                    this.Usuario1Field = value;
-                    this.RaisePropertyChanged("Usuario1");
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Contrasena {
+        public PicadoDental.EF_PicadoDental_WS.Persona[] Personas {
             get {
-                return this.ContrasenaField;
+                return this.PersonasField;
             }
             set {
-                if ((object.ReferenceEquals(this.ContrasenaField, value) != true)) {
-                    this.ContrasenaField = value;
-                    this.RaisePropertyChanged("Contrasena");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public PicadoDental.EF_PicadoDental_WS.Admin[] Admins {
-            get {
-                return this.AdminsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AdminsField, value) != true)) {
-                    this.AdminsField = value;
-                    this.RaisePropertyChanged("Admins");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public PicadoDental.EF_PicadoDental_WS.Doctor[] Doctors {
-            get {
-                return this.DoctorsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DoctorsField, value) != true)) {
-                    this.DoctorsField = value;
-                    this.RaisePropertyChanged("Doctors");
+                if ((object.ReferenceEquals(this.PersonasField, value) != true)) {
+                    this.PersonasField = value;
+                    this.RaisePropertyChanged("Personas");
                 }
             }
         }
@@ -730,10 +673,10 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short GeneroIdField;
+        private int GeneroIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescipcionField;
+        private string DescGeneroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PicadoDental.EF_PicadoDental_WS.Persona[] PersonasField;
@@ -749,27 +692,27 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short GeneroId {
+        public int GeneroID {
             get {
-                return this.GeneroIdField;
+                return this.GeneroIDField;
             }
             set {
-                if ((this.GeneroIdField.Equals(value) != true)) {
-                    this.GeneroIdField = value;
-                    this.RaisePropertyChanged("GeneroId");
+                if ((this.GeneroIDField.Equals(value) != true)) {
+                    this.GeneroIDField = value;
+                    this.RaisePropertyChanged("GeneroID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Descipcion {
+        public string DescGenero {
             get {
-                return this.DescipcionField;
+                return this.DescGeneroField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescipcionField, value) != true)) {
-                    this.DescipcionField = value;
-                    this.RaisePropertyChanged("Descipcion");
+                if ((object.ReferenceEquals(this.DescGeneroField, value) != true)) {
+                    this.DescGeneroField = value;
+                    this.RaisePropertyChanged("DescGenero");
                 }
             }
         }
@@ -799,24 +742,20 @@ namespace PicadoDental.EF_PicadoDental_WS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Admin", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoCuenta", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class Admin : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class TipoCuenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private short AdminIdField;
-        
-        private short PersonaIdField;
-        
-        private short UsuarioIdField;
+        private int TipoCuentaIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Persona PersonaField;
+        private string DescTipoCuentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PicadoDental.EF_PicadoDental_WS.Usuario UsuarioField;
+        private PicadoDental.EF_PicadoDental_WS.Persona[] PersonasField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -829,66 +768,40 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short AdminId {
+        public int TipoCuentaID {
             get {
-                return this.AdminIdField;
+                return this.TipoCuentaIDField;
             }
             set {
-                if ((this.AdminIdField.Equals(value) != true)) {
-                    this.AdminIdField = value;
-                    this.RaisePropertyChanged("AdminId");
+                if ((this.TipoCuentaIDField.Equals(value) != true)) {
+                    this.TipoCuentaIDField = value;
+                    this.RaisePropertyChanged("TipoCuentaID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short PersonaId {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string DescTipoCuenta {
             get {
-                return this.PersonaIdField;
+                return this.DescTipoCuentaField;
             }
             set {
-                if ((this.PersonaIdField.Equals(value) != true)) {
-                    this.PersonaIdField = value;
-                    this.RaisePropertyChanged("PersonaId");
+                if ((object.ReferenceEquals(this.DescTipoCuentaField, value) != true)) {
+                    this.DescTipoCuentaField = value;
+                    this.RaisePropertyChanged("DescTipoCuenta");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public short UsuarioId {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public PicadoDental.EF_PicadoDental_WS.Persona[] Personas {
             get {
-                return this.UsuarioIdField;
+                return this.PersonasField;
             }
             set {
-                if ((this.UsuarioIdField.Equals(value) != true)) {
-                    this.UsuarioIdField = value;
-                    this.RaisePropertyChanged("UsuarioId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public PicadoDental.EF_PicadoDental_WS.Persona Persona {
-            get {
-                return this.PersonaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PersonaField, value) != true)) {
-                    this.PersonaField = value;
-                    this.RaisePropertyChanged("Persona");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public PicadoDental.EF_PicadoDental_WS.Usuario Usuario {
-            get {
-                return this.UsuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
-                    this.UsuarioField = value;
-                    this.RaisePropertyChanged("Usuario");
+                if ((object.ReferenceEquals(this.PersonasField, value) != true)) {
+                    this.PersonasField = value;
+                    this.RaisePropertyChanged("Personas");
                 }
             }
         }
@@ -935,14 +848,14 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ModifyClient", ReplyAction="*")]
         System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ModifyClientResponse> ModifyClientAsync(PicadoDental.EF_PicadoDental_WS.ModifyClientRequest request);
         
-        // CODEGEN: Generating message contract since element name descripcion from namespace http://tempuri.org/ is not marked nillable
+        // CODEGEN: Generating message contract since element name fechaHora from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewAppointment", ReplyAction="*")]
         PicadoDental.EF_PicadoDental_WS.NewAppointmentResponse NewAppointment(PicadoDental.EF_PicadoDental_WS.NewAppointmentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewAppointment", ReplyAction="*")]
         System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.NewAppointmentResponse> NewAppointmentAsync(PicadoDental.EF_PicadoDental_WS.NewAppointmentRequest request);
         
-        // CODEGEN: Generating message contract since element name descripcion from namespace http://tempuri.org/ is not marked nillable
+        // CODEGEN: Generating message contract since element name doctorId from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ModifyAppointment", ReplyAction="*")]
         PicadoDental.EF_PicadoDental_WS.ModifyAppointmentResponse ModifyAppointment(PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequest request);
         
@@ -1011,13 +924,13 @@ namespace PicadoDental.EF_PicadoDental_WS {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class LogInResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool LogInResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ArrayOfString LogInResult;
         
         public LogInResponseBody() {
         }
         
-        public LogInResponseBody(bool LogInResult) {
+        public LogInResponseBody(PicadoDental.EF_PicadoDental_WS.ArrayOfString LogInResult) {
             this.LogInResult = LogInResult;
         }
     }
@@ -1122,12 +1035,12 @@ namespace PicadoDental.EF_PicadoDental_WS {
         public string correo;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-        public byte generoID;
+        public int generoID;
         
         public NewClientRequestBody() {
         }
         
-        public NewClientRequestBody(string nombre, string primerApellido, string segundoApellido, string telefono, string correo, byte generoID) {
+        public NewClientRequestBody(string nombre, string primerApellido, string segundoApellido, string telefono, string correo, int generoID) {
             this.nombre = nombre;
             this.primerApellido = primerApellido;
             this.segundoApellido = segundoApellido;
@@ -1188,7 +1101,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
     public partial class ModifyClientRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public short personaId;
+        public int personaId;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public string telefono;
@@ -1196,17 +1109,13 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string correo;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public byte generoID;
-        
         public ModifyClientRequestBody() {
         }
         
-        public ModifyClientRequestBody(short personaId, string telefono, string correo, byte generoID) {
+        public ModifyClientRequestBody(int personaId, string telefono, string correo) {
             this.personaId = personaId;
             this.telefono = telefono;
             this.correo = correo;
-            this.generoID = generoID;
         }
     }
     
@@ -1261,13 +1170,13 @@ namespace PicadoDental.EF_PicadoDental_WS {
     public partial class NewAppointmentRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public short clienteId;
+        public int clienteId;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public short doctorId;
+        public int doctorId;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.DateTime fechaHora;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string fechaHora;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
         public string descripcion;
@@ -1278,7 +1187,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
         public NewAppointmentRequestBody() {
         }
         
-        public NewAppointmentRequestBody(short clienteId, short doctorId, System.DateTime fechaHora, string descripcion, string comentarios) {
+        public NewAppointmentRequestBody(int clienteId, int doctorId, string fechaHora, string descripcion, string comentarios) {
             this.clienteId = clienteId;
             this.doctorId = doctorId;
             this.fechaHora = fechaHora;
@@ -1338,13 +1247,13 @@ namespace PicadoDental.EF_PicadoDental_WS {
     public partial class ModifyAppointmentRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public short citaId;
+        public int citaId;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public short doctorId;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string doctorId;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.DateTime fechaHora;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string fechaHora;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
         public string descripcion;
@@ -1355,7 +1264,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
         public ModifyAppointmentRequestBody() {
         }
         
-        public ModifyAppointmentRequestBody(short citaId, short doctorId, System.DateTime fechaHora, string descripcion, string comentarios) {
+        public ModifyAppointmentRequestBody(int citaId, string doctorId, string fechaHora, string descripcion, string comentarios) {
             this.citaId = citaId;
             this.doctorId = doctorId;
             this.fechaHora = fechaHora;
@@ -1423,7 +1332,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.LogIn(request);
         }
         
-        public bool LogIn(string usuario, string contrasena) {
+        public PicadoDental.EF_PicadoDental_WS.ArrayOfString LogIn(string usuario, string contrasena) {
             PicadoDental.EF_PicadoDental_WS.LogInRequest inValue = new PicadoDental.EF_PicadoDental_WS.LogInRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.LogInRequestBody();
             inValue.Body.usuario = usuario;
@@ -1473,7 +1382,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.NewClient(request);
         }
         
-        public void NewClient(string nombre, string primerApellido, string segundoApellido, string telefono, string correo, byte generoID) {
+        public void NewClient(string nombre, string primerApellido, string segundoApellido, string telefono, string correo, int generoID) {
             PicadoDental.EF_PicadoDental_WS.NewClientRequest inValue = new PicadoDental.EF_PicadoDental_WS.NewClientRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.NewClientRequestBody();
             inValue.Body.nombre = nombre;
@@ -1490,7 +1399,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.NewClientAsync(request);
         }
         
-        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.NewClientResponse> NewClientAsync(string nombre, string primerApellido, string segundoApellido, string telefono, string correo, byte generoID) {
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.NewClientResponse> NewClientAsync(string nombre, string primerApellido, string segundoApellido, string telefono, string correo, int generoID) {
             PicadoDental.EF_PicadoDental_WS.NewClientRequest inValue = new PicadoDental.EF_PicadoDental_WS.NewClientRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.NewClientRequestBody();
             inValue.Body.nombre = nombre;
@@ -1507,13 +1416,12 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.ModifyClient(request);
         }
         
-        public void ModifyClient(short personaId, string telefono, string correo, byte generoID) {
+        public void ModifyClient(int personaId, string telefono, string correo) {
             PicadoDental.EF_PicadoDental_WS.ModifyClientRequest inValue = new PicadoDental.EF_PicadoDental_WS.ModifyClientRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.ModifyClientRequestBody();
             inValue.Body.personaId = personaId;
             inValue.Body.telefono = telefono;
             inValue.Body.correo = correo;
-            inValue.Body.generoID = generoID;
             PicadoDental.EF_PicadoDental_WS.ModifyClientResponse retVal = ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ModifyClient(inValue);
         }
         
@@ -1522,13 +1430,12 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.ModifyClientAsync(request);
         }
         
-        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ModifyClientResponse> ModifyClientAsync(short personaId, string telefono, string correo, byte generoID) {
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ModifyClientResponse> ModifyClientAsync(int personaId, string telefono, string correo) {
             PicadoDental.EF_PicadoDental_WS.ModifyClientRequest inValue = new PicadoDental.EF_PicadoDental_WS.ModifyClientRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.ModifyClientRequestBody();
             inValue.Body.personaId = personaId;
             inValue.Body.telefono = telefono;
             inValue.Body.correo = correo;
-            inValue.Body.generoID = generoID;
             return ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ModifyClientAsync(inValue);
         }
         
@@ -1537,7 +1444,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.NewAppointment(request);
         }
         
-        public void NewAppointment(short clienteId, short doctorId, System.DateTime fechaHora, string descripcion, string comentarios) {
+        public void NewAppointment(int clienteId, int doctorId, string fechaHora, string descripcion, string comentarios) {
             PicadoDental.EF_PicadoDental_WS.NewAppointmentRequest inValue = new PicadoDental.EF_PicadoDental_WS.NewAppointmentRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.NewAppointmentRequestBody();
             inValue.Body.clienteId = clienteId;
@@ -1553,7 +1460,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.NewAppointmentAsync(request);
         }
         
-        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.NewAppointmentResponse> NewAppointmentAsync(short clienteId, short doctorId, System.DateTime fechaHora, string descripcion, string comentarios) {
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.NewAppointmentResponse> NewAppointmentAsync(int clienteId, int doctorId, string fechaHora, string descripcion, string comentarios) {
             PicadoDental.EF_PicadoDental_WS.NewAppointmentRequest inValue = new PicadoDental.EF_PicadoDental_WS.NewAppointmentRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.NewAppointmentRequestBody();
             inValue.Body.clienteId = clienteId;
@@ -1569,7 +1476,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.ModifyAppointment(request);
         }
         
-        public void ModifyAppointment(short citaId, short doctorId, System.DateTime fechaHora, string descripcion, string comentarios) {
+        public void ModifyAppointment(int citaId, string doctorId, string fechaHora, string descripcion, string comentarios) {
             PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequest inValue = new PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequestBody();
             inValue.Body.citaId = citaId;
@@ -1585,7 +1492,7 @@ namespace PicadoDental.EF_PicadoDental_WS {
             return base.Channel.ModifyAppointmentAsync(request);
         }
         
-        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ModifyAppointmentResponse> ModifyAppointmentAsync(short citaId, short doctorId, System.DateTime fechaHora, string descripcion, string comentarios) {
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ModifyAppointmentResponse> ModifyAppointmentAsync(int citaId, string doctorId, string fechaHora, string descripcion, string comentarios) {
             PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequest inValue = new PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.ModifyAppointmentRequestBody();
             inValue.Body.citaId = citaId;

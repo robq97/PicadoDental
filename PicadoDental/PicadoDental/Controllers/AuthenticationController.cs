@@ -24,9 +24,9 @@ namespace PicadoDental.Controllers
         /// <returns>Devuelve el HomePage Publico</returns>
         public ActionResult LogOut()
         {
-            if (Session["username"] != null)
+            if (Session["TipoUsuario"] != null)
             {
-                Session["username"] = null;
+                Session["TipoUsuario"] = null;
             }
             return RedirectToAction("Index", "Home");
         }
@@ -36,18 +36,41 @@ namespace PicadoDental.Controllers
             return View();
         }
 
-        public ActionResult  Authentication(string usuario, string password)
+        public ActionResult Authentication(string usuario, string password)
         {
             EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
-            if (WS.LogIn(usuario, password) == true)
+            var info = WS.LogIn(usuario, password);
+
+            if (info[1] != null)
             {
-                Session["username"] = usuario.FirstOrDefault();
-                return RedirectToAction("NewClient", "Client");
+
+                if (info[1] == "1")
+                {
+                    Session["TipoUsuario"] = "Admin";
+                    return RedirectToAction("NewClient", "Client");
+                }
+                else if (info[1] == "2")
+                {
+                    Session["TipoUsuario"] = "Usuario";
+                    return RedirectToAction("NewClient", "Client");
+                }
+                else if (info[1] == "3")
+                {
+                    Session["TipoUsuario"] = "Doctor";
+                    return RedirectToAction("NewClient", "Client");
+                }
+                else if (info[1] == "4")
+                {
+                    Session["TipoUsuario"] = "Cliente";
+                }
             }
             else
             {
                 return RedirectToAction("Index", "Home");
             }
+
+            return new EmptyResult();
         }
+        
     }
 }
