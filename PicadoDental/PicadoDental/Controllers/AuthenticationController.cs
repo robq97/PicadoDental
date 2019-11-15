@@ -9,14 +9,14 @@ namespace PicadoDental.Controllers
     public class AuthenticationController : Controller
     {
 
-        public ActionResult LogIn()
-        {
-            if (Session["username"] != null)
-            {
-                return RedirectToAction("NewClient", "Client");
-            }
-            return View();
-        }
+        //public ActionResult LogIn()
+        //{
+        //    if (Session["TipoUsuario"] != null)
+        //    {
+        //        return RedirectToAction("NewClient", "Client");
+        //    }
+        //    return View();
+        //}
 
         /// <summary>
         /// Revisa que el admin este con una sesion iniciada
