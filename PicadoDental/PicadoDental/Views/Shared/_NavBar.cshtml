@@ -13,7 +13,7 @@
         min-width: 160px;
     }
 </style>
-@if (Session["TipoUsuario"] != null)
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
 {
     <nav>
         <div class="nav-wrapper">
@@ -41,11 +41,30 @@
         </div>
     </nav>
 }
-@*@if (Session["TipoUsuario"].Equals("Doctor"))
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Doctor"))
 {
-
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+            <a href="#" data-target="menu-responsive" class="brand-logo"></a>
+            <ul class="right hide-on-med-and-down">
+                <li>@Html.ActionLink("Nueva cita", "newAppointment", "Appointment")</li>
+                <li>@Html.ActionLink("Mis pacientes", "ClientList", "Client")</li>
+                <li>@Html.ActionLink("Mis citas", "AppointmentList", "Appointment")</li>
+                <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
+            </ul>
+        </div>
+    </nav>
 }
-@if (Session["TipoUsuario"].Equals("Admin"))
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
 {
-
-}*@
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+            <a href="#" data-target="menu-responsive" class="brand-logo"></a>
+            <ul class="right hide-on-med-and-down">
+                <li>@Html.ActionLink("Nueva secretaria", "#", "#")</li>
+                <li>@Html.ActionLink("Nuevo administrador", "#", "#")</li>
+                <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
+            </ul>
+        </div>
+    </nav>
+}

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace PicadoDental.Controllers
 {
+
+    [System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     public class AuthenticationController : Controller
     {
 
@@ -27,6 +29,10 @@ namespace PicadoDental.Controllers
             if (Session["TipoUsuario"] != null)
             {
                 Session["TipoUsuario"] = null;
+                Session.Contents.RemoveAll();
+                Session.RemoveAll();
+                Session.Abandon();
+                RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Home");
         }
@@ -47,21 +53,17 @@ namespace PicadoDental.Controllers
                 if (info[1] == "1")
                 {
                     Session["TipoUsuario"] = "Admin";
-                    return RedirectToAction("NewClient", "Client");
+                    return RedirectToAction("NewClient", "Client"); //redireccionar a nueva secretaria
                 }
                 else if (info[1] == "2")
                 {
-                    Session["TipoUsuario"] = "Usuario";
+                    Session["TipoUsuario"] = "Secretaria";
                     return RedirectToAction("NewClient", "Client");
                 }
                 else if (info[1] == "3")
                 {
                     Session["TipoUsuario"] = "Doctor";
-                    return RedirectToAction("NewClient", "Client");
-                }
-                else if (info[1] == "4")
-                {
-                    Session["TipoUsuario"] = "Cliente";
+                    return RedirectToAction("NewAppointment", "Appointment");
                 }
             }
             else
