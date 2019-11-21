@@ -9,9 +9,17 @@ namespace PicadoDental.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        // GET: Admin
+        public ActionResult Secretary()
         {
             return View();
         }
     }
 }
+
+    
+

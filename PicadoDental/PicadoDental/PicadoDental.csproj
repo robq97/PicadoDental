@@ -212,11 +212,12 @@
     <Content Include="Views\Client\Client.cshtml" />
     <Content Include="Views\Doctor\DoctorList.cshtml" />
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Admin\Secretary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
