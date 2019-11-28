@@ -8,20 +8,25 @@ namespace PicadoDental.Controllers
 {
     public class AppointmentController : Controller
     {
-        // GET: Appointment
-        public ActionResult NewAppointment()
-        {
-            return View();
-        }
-
-        public ActionResult AppointmentList()
-        {
-            return View();
-        }
-
-        public ActionResult Appointment()
-        {
-            return View();
-        }
+        //// GET: NewAppointment
+        //public ActionResult NewAppointment()
+        //{
+        //    return View();
+        //}
+        //// GET: AppointmentList
+        //public ActionResult AppointmentList()
+        //{
+        //    return View();
+        //}
+        //// GET: Appointment
+        //public ActionResult Appointment()
+        //{
+        //    return View();
+        //}
+        //// GET: UpdateAppointment
+        //public ActionResult UpdateAppointment()
+        //{
+        //    return View();
+        //}
     }
 }
