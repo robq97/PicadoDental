@@ -20,12 +20,14 @@ namespace PicadoDental.Controllers
         public ActionResult AddNewClient(
             string FirstName,
             string LastName,
-            string Id,
+            string SecondName,
+            int Id,
             string Phone,
             string Email,
-            string Gender)
+            int Gender,
+            int tipoCuentaID = 4)
         {
-            WS.NewClient(FirstName, LastName, "", Phone, Email, int.Parse(Gender));
+            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID);
 
             return RedirectToAction("ClientList", "Client");
         }

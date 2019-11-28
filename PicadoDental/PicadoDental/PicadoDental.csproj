@@ -130,7 +130,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -165,6 +164,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ClientePOCO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.NewPersonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\EF_PicadoDental_WS\Reference.svcmap">
@@ -214,6 +219,7 @@
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Admin\Secretary.cshtml" />
+    <Content Include="Views\Appointment\UpdateAppointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
