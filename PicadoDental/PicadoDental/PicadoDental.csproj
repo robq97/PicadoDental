@@ -167,6 +167,12 @@
     <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ArrayOfString.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ClientePOCO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.NewPersonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\EF_PicadoDental_WS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
