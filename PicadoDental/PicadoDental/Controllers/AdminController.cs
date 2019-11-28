@@ -18,22 +18,23 @@ namespace PicadoDental.Controllers
             string FirstName,
             string LastName,
             string SecondName,
-            string Id,
+            int Id,
             string Phone,
             string Email,
             string Gender,
             string usuario,
             string contrasena,
             string confirmacion,
-            int tipoCuentaID = 4)
+            int tipoCuentaID = 1)
         {
-            //if(validacion(contrasena, confirmacion))
-            
-                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Convert.ToInt32(Id), tipoCuentaID, usuario, contrasena);
-            
+            if (validacion(contrasena, confirmacion))
+            {
+
+                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+            }
         
 
-            return RedirectToAction("AddNewAdmin", "Admin");
+            return RedirectToAction("Admin", "Admin");
         }
 
         public Boolean validacion (string contrasena, string confirmacion)
@@ -62,7 +63,7 @@ namespace PicadoDental.Controllers
             int Gender,
             string usuario,
             string contrasena,
-            int tipoCuentaID = 4)
+            int tipoCuentaID = 2)
         {
             WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender, Id, tipoCuentaID, usuario, contrasena);
 

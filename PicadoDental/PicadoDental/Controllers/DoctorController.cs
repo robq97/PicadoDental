@@ -32,5 +32,14 @@ namespace PicadoDental.Controllers
 
             return RedirectToAction("ClientList", "Client");
         }
+
+        public Boolean validacion(string contrasena, string confirmacion)
+        {
+            if (contrasena.Equals(confirmacion))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
