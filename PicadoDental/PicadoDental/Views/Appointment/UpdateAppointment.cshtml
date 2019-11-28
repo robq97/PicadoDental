@@ -1,11 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "NewAppointment";
+    ViewBag.Title = "UpdateAppointment";
 }
+
+
 <div class="container body-content green lighten-5">
     <div style="margin-top: 5%" class="row">
         <div class="col s12 card-panel center green darken-3 white-text">
-            <span class="card-title" style="font-size: 55px">Nueva cita:</span>
+            <span class="card-title" style="font-size: 55px">Modificar cita:</span>
         </div>
         <div class="row">
             <div class="row">
@@ -14,17 +16,7 @@
                     <input id="Date" name="Date" type="text" class="datepicker validate black-text" required="">
                     <label class="black-text" for="Date">Fecha cita:</label>
                 </div>
-                <div class="input-field input col s3 ">
-                    <i class="material-icons prefix">person</i>
-                    <input id="FirstName" name="FirstName" type="text" class="center black-text text-accent-1 validate .left-alert" required="">
-                    <label class="black-text" for="FirstName">Nombre:</label>
-                </div>
-                <div class="input-field col s3">
-                    <i class="material-icons prefix">person</i>
-                    <input id="LastName" name="LastName" type="text" class="center black-text text-accent-1 validate .left-alert" required="">
-                    <label class="black-text" for="LastName">Apellidos:</label>
-                </div>
-                <div class="input-field input col s3 offset-s1">
+                <div class="input-field input col s3">
                     <i class="material-icons prefix">assignment_ind</i>
                     <input id="DocFirstName" name="DocFirstName" type="text" class="center black-text text-accent-1 validate .left-alert" required="">
                     <label class="black-text" for="DocFirstName">Nombre Doctor:</label>
@@ -34,24 +26,29 @@
                     <input id="DocLastName" name="DocLastName" type="text" class="center black-text text-accent-1 validate .left-alert" required="">
                     <label class="black-text" for="DocLastName">Apellidos Doctor:</label>
                 </div>
-                <div class="input-field col s3">
-                    <i class="material-icons prefix">assignment_ind</i>
-                    <input id="DocSpecialty" name="DocSpecialty" type="text" class="center black-text text-accent-1 validate .left-alert" required="">
-                    <label class="black-text" for="DocSpecialty">Descripción:</label>
-                </div>
+                <divc class="row">
+                    <div class="input-field col s9 offset-s1">
+                        <i class="material-icons prefix">assignment_ind</i>
+                        <input id="Description" name="Description" type="text" class="center black-text text-accent-1 validate .left-alert" required="">
+                        <label class="black-text" for="Description">Descripción:</label>
+                    </div>
+                </divc>
                 <div class="row">
                     <div class="input-field col s9 offset-s1">
                         <i class="material-icons prefix">note</i>
-                        <textarea id="Motive" name="Motive" type="text" class="materialize-textarea black-text"></textarea>
-                        <label class="black-text" for="Motive">Comentarios:</label>
+                        <textarea id="Coments" name="Coments" type="text" class="materialize-textarea black-text"></textarea>
+                        <label class="black-text" for="Coments">Comentarios:</label>
                     </div>
                 </div>
                 <div class="center" style="margin-bottom: 5%">
                     <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">
-                        Agregar
-                        <i class="material-icons right">add</i>
+                        Modificar
+                        <i class="material-icons right">mode_edit</i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
