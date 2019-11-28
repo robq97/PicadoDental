@@ -55,6 +55,8 @@
             <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="cedula" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="tipoCuentaID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -72,6 +74,46 @@
       </s:element>
       <s:element name="ModifyClientResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="CitaList">
+        <s:complexType />
+      </s:element>
+      <s:element name="CitaListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CitaListResult" type="tns:ArrayOfCitaPOCO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCitaPOCO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CitaPOCO" nillable="true" type="tns:CitaPOCO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CitaPOCO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteApellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorApellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detalles" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CitaListByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CitaListByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CitaListByIDResult" type="tns:ArrayOfCitaPOCO" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="NewAppointment">
         <s:complexType>
@@ -127,6 +169,18 @@
   <wsdl:message name="ModifyClientSoapOut">
     <wsdl:part name="parameters" element="tns:ModifyClientResponse" />
   </wsdl:message>
+  <wsdl:message name="CitaListSoapIn">
+    <wsdl:part name="parameters" element="tns:CitaList" />
+  </wsdl:message>
+  <wsdl:message name="CitaListSoapOut">
+    <wsdl:part name="parameters" element="tns:CitaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CitaListByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:CitaListByID" />
+  </wsdl:message>
+  <wsdl:message name="CitaListByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:CitaListByIDResponse" />
+  </wsdl:message>
   <wsdl:message name="NewAppointmentSoapIn">
     <wsdl:part name="parameters" element="tns:NewAppointment" />
   </wsdl:message>
@@ -155,6 +209,14 @@
     <wsdl:operation name="ModifyClient">
       <wsdl:input message="tns:ModifyClientSoapIn" />
       <wsdl:output message="tns:ModifyClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CitaList">
+      <wsdl:input message="tns:CitaListSoapIn" />
+      <wsdl:output message="tns:CitaListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CitaListByID">
+      <wsdl:input message="tns:CitaListByIDSoapIn" />
+      <wsdl:output message="tns:CitaListByIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="NewAppointment">
       <wsdl:input message="tns:NewAppointmentSoapIn" />
@@ -196,6 +258,24 @@
     </wsdl:operation>
     <wsdl:operation name="ModifyClient">
       <soap:operation soapAction="http://tempuri.org/ModifyClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CitaList">
+      <soap:operation soapAction="http://tempuri.org/CitaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CitaListByID">
+      <soap:operation soapAction="http://tempuri.org/CitaListByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -253,6 +333,24 @@
     </wsdl:operation>
     <wsdl:operation name="ModifyClient">
       <soap12:operation soapAction="http://tempuri.org/ModifyClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CitaList">
+      <soap12:operation soapAction="http://tempuri.org/CitaList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CitaListByID">
+      <soap12:operation soapAction="http://tempuri.org/CitaListByID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
