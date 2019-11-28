@@ -1,4 +1,7 @@
-﻿@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+﻿@model IEnumerable<PicadoDental.Models.MAppointmentList>
+
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+
 {
     {
         ViewBag.Title = "AppointmentList";
@@ -22,6 +25,7 @@
             border: none;
         }
     </style>
+
     <div class="container body-content">
         <div class="row" style="margin-top: 5%">
             <div class="card green darken-3 white-text">
@@ -40,68 +44,32 @@
                         </tr>
                     </thead>
                     <tbody class="green lighten-5 black-text">
-                        @*@if (Session["UserType"] != null && Session["UserType"].Equals("Admin"))
+                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+
+                        {
+                            foreach (var p in Model)
                             {
-                                foreach (var p in Model)
-                                {
-                                    <tr class="clientTableCell">
-                                        <td>@p.PagoID</td>
-                                        <td>@p.Cedula</td>
-                                        <td>@p.Nombre</td>
-                                        <td>@p.DescTipoSuscripcion</td>
-                                        <td>
-                                            <a class="btn-floating  green darken-3">
+                                <tr class="clientTableCell">
+                                    <td>@p.Fecha</td>
+                                    <td>@p.ClienteNombre</td>
+                                    <td>@p.ClienteApellidos</td>
+                                    <td>@p.DoctorNombre</td>
+                                    <td>@p.DoctorApellidos</td>
+                                    <td>                                       
+                                        <a href="/Appointment/Appointment/@p.CitaID" class="btn-floating  green darken-3">
                                                 <i class="material-icons">details</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                }
-                            }*@
-                        <tr class="clientTableCell">
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asdn</td>
-                            <td>
-                                <a href="/Appointment/Appointment/1" class="btn-floating  green darken-3">
-                                    <i class="material-icons">details</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="clientTableCell">
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asdn</td>
-                            <td>
-                                <a href="/Appointment/Appointment/2" class="btn-floating  green darken-3">
-                                    <i class="material-icons">details</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="clientTableCell">
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asdn</td>
-                            <td>
-                                <a href="/Appointment/Appointment/3" class="btn-floating  green darken-3">
-                                    <i class="material-icons">details</i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 }
-
-    @if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
-    {
-        Response.Redirect("~/Home/Index");
-    }
+@if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
+{
+    Response.Redirect("~/Home/Index");
+}

@@ -1,44 +1,47 @@
-﻿@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+﻿@model IEnumerable<PicadoDental.Models.MAppointmentList>
+
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
 {
+    
     {
         ViewBag.Title = "Appointment/{id}";
     }
+    foreach (var p in Model)
+    {
     <div class="container body-content">
         <div class="row" style="margin-top: 5%">
             <div class="card green darken-3 white-text">
                 <div class="center">
-                    <span class="card-title" style="font-size: 55px">Cita: #{id}</span>
+                    <span class="card-title" style="font-size: 55px">Cita: @p.CitaID</span>
                 </div>
                 <ul class="collection with-header black-text">
                     <li class="collection-header"><h4>Fecha/Hora:</h4></li>
-                    <li class="collection-item">{fechaHora}</li>
+                    <li class="collection-item">@p.Fecha}</li>
                     <li class="collection-header"><h4>Doctor Nombre:</h4></li>
-                    <li class="collection-item">{doctorNombre}</li>
-                    <li class="collection-header"><h4>Doctor especialidad:</h4></li>
-                    <li class="collection-item">{especialidad}</li>
+                    <li class="collection-item">@p.DoctorNombre</li>
                     <li class="collection-header"><h4>Doctor Apellidos:</h4></li>
-                    <li class="collection-item">{doctorApellidos}</li>
+                    <li class="collection-item">@p.DoctorApellidos</li>
                     <li class="collection-header"><h4>Doctor Telefono:</h4></li>
-                    <li class="collection-item">{doctorTelefono}</li>
+                    <li class="collection-item">@p.DoctorTelefono</li>
                     <li class="collection-header"><h4>Doctor Correo:</h4></li>
-                    <li class="collection-item">{clienteCorreo}</li>
+                    <li class="collection-item">@p.DoctorCorreo</li>
                     <li class="collection-header"><h4>Cliente Nombre:</h4></li>
-                    <li class="collection-item">{clienteNombre}</li>
+                    <li class="collection-item">@p.ClienteNombre</li>
                     <li class="collection-header"><h4>Cliente Apellidos:</h4></li>
-                    <li class="collection-item">{clienteApellidos}</li>
+                    <li class="collection-item">@p.ClienteApellidos</li>
                     <li class="collection-header"><h4>Cliente Telefono:</h4></li>
-                    <li class="collection-item">{clienteTelefono}</li>
+                    <li class="collection-item">@p.ClienteTelefono</li>
                     <li class="collection-header"><h4>Cliente Correo:</h4></li>
-                    <li class="collection-item">{clienteCorreo}</li>
+                    <li class="collection-item">@p.ClienteCorreo</li>
                     <li class="collection-header"><h4>Descripcion:</h4></li>
-                    <li class="collection-item">{descripcion}</li>
+                    <li class="collection-item">@p.Detalles</li>
                     <li class="collection-header"><h4>Comentarios:</h4></li>
-                    <li class="collection-item">{comentarios}</li>
+                    <li class="collection-item">@p.Comentarios</li>
                 </ul>
             </div>
         </div>
     </div>
-}
+    } }
 @if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
 {
     Response.Redirect("~/Home/Index");

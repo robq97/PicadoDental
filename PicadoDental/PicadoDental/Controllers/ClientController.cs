@@ -27,7 +27,7 @@ namespace PicadoDental.Controllers
             int Gender,
             int tipoCuentaID = 4)
         {
-            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID);
+            //WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID);
 
             return RedirectToAction("ClientList", "Client");
         }
