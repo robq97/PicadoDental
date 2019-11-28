@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace PicadoDental.Controllers
 {
 
-    [System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+    //[System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     public class AuthenticationController : Controller
     {
 

@@ -1,7 +1,10 @@
 ﻿
-@{
-    ViewBag.Title = "NewAppointment";
-}
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+{
+
+    {
+        ViewBag.Title = "NewAppointment";
+    }
 <div class="container body-content green lighten-5">
     <div style="margin-top: 5%" class="row">
         <div class="col s12 card-panel center green darken-3 white-text">
@@ -55,3 +58,10 @@
             </div>
         </div>
     </div>
+</div>
+    }
+    @if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
+    {
+        Response.Redirect("~/Home/Index");
+    }
+
