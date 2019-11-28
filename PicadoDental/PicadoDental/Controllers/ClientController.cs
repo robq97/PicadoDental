@@ -25,12 +25,15 @@ namespace PicadoDental.Controllers
             string Phone,
             string Email,
             int Gender,
+            string usuario= "",
+            string contrasena= "",
             int tipoCuentaID = 4)
         {
-            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID);
+            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID,usuario,contrasena);
 
             return RedirectToAction("ClientList", "Client");
         }
+
 
         public ActionResult ClientList()
         {
