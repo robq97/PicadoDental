@@ -8,7 +8,7 @@ namespace PicadoDental.Controllers
 {
     public class DoctorController : Controller
     {
-        // GET: Cliente
+        // GET: Doctor
         public ActionResult NewDoctor()
         {
             return View();

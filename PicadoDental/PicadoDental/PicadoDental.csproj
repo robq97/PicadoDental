@@ -130,9 +130,9 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\Doctor.cs" />
     <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
