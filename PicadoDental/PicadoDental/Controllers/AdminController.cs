@@ -10,10 +10,16 @@ namespace PicadoDental.Controllers
     {
         EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
         // GET: Admin
-        public ActionResult Admin()
+        public ActionResult NewAdmin()
         {
             return View();
         }
+
+        public ActionResult NewSecretary()
+        {
+            return View();
+        }
+
         public ActionResult AddNewAdmin( 
             string FirstName,
             string LastName,
@@ -53,6 +59,7 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
+
         public ActionResult AddNewSecretary(
             string FirstName,
             string LastName,

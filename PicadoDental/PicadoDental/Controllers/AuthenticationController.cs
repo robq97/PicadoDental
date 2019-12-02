@@ -53,7 +53,7 @@ namespace PicadoDental.Controllers
                 if (info[1] == "1")
                 {
                     Session["TipoUsuario"] = "Admin";
-                    return RedirectToAction("NewClient", "Client"); //redireccionar a nueva secretaria
+                    return RedirectToAction("NewSecretary", "Admin"); //redireccionar a nueva secretaria
                 }
                 else if (info[1] == "2")
                 {
