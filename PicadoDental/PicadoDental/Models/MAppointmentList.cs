@@ -22,7 +22,7 @@ namespace PicadoDental.Models
         public String Comentarios { get; set; }
         public int CitaID { get; set; }
         public int DoctorID { get; set; }
-
+        public DateTime Hora { get; set; }
 
     }
 }
