@@ -12,8 +12,67 @@ namespace PicadoDental.Controllers
         //GET: NewAppointment
         public ActionResult NewAppointment()
         {
+            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+            // Dropdown of clients
+            var infoClientes = WS.ListaClientes();
+            List<MAppointmentList> listaClientes = new List<MAppointmentList>();
+            for (int i = 0; i < infoClientes.Length; i++)
+            {
+                MAppointmentList cliente = new MAppointmentList();
+                cliente.ClienteID =  infoClientes[i].ClienteID;
+                cliente.ClienteNombre = infoClientes[i].ClienteNombre;
+                listaClientes.Add(cliente);
+            }
+            ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
+            // Dropdown of doctors
+            var infoDoctores = WS.ListaDoctores();
+            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+            for (int i = 0; i < infoDoctores.Length; i++)
+            {
+                MAppointmentList doctor = new MAppointmentList();
+                doctor.DoctorID = infoDoctores[i].DoctorID;
+                doctor.DoctorNombre= infoDoctores[i].DoctorNombre;
+                listaDoctores.Add(doctor);
+            }
+            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
             return View();
         }
+        
+        //GET: NewAppointment
+        [HttpPost]
+        public ActionResult NewAppointment(MAppointmentList lista)
+        {
+            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+            // Dropdown of clients
+            var infoClientes = WS.ListaClientes();
+            List<MAppointmentList> listaClientes = new List<MAppointmentList>();
+            for (int i = 0; i < infoClientes.Length; i++)
+            {
+                MAppointmentList cliente = new MAppointmentList();
+                cliente.ClienteID = infoClientes[i].ClienteID;
+                cliente.ClienteNombre = infoClientes[i].ClienteNombre;
+                listaClientes.Add(cliente);
+            }
+            ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
+
+            // Dropdown of doctors
+            var infoDoctores = WS.ListaDoctores();
+            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+            for (int i = 0; i < infoDoctores.Length; i++)
+            {
+                MAppointmentList doctor = new MAppointmentList();
+                doctor.DoctorID = infoDoctores[i].DoctorID;
+                doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                listaDoctores.Add(doctor);
+            }
+            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
+            WS.NewAppointment(lista.ClienteID, lista.DoctorID, lista.Fecha.ToString(), lista.Detalles, lista.Comentarios);
+            return RedirectToAction("AppointmentList", "Appointment");
+        }
+        /// <summary>
+        /// Method to apply for appointment list
+        /// </summary>
+        /// <returns>All the list of appointments</returns>
         // GET: AppointmentList
         public ActionResult AppointmentList()
         {
@@ -38,6 +97,11 @@ namespace PicadoDental.Controllers
             }
             return View(list);
         }
+        /// <summary>
+        /// Method to apply a details of specific appointment
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Returns details of specific appointment</returns>
         // GET: Appointment
         public ActionResult Appointment(int id)
         {
@@ -67,12 +131,54 @@ namespace PicadoDental.Controllers
             }
             return View(list);
         }
+        /// <summary>
+        /// View to change appointment information
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: UpdateAppointment
-        public ActionResult UpdateAppointment()
+        public ActionResult UpdateAppointment(int id)
         {
+            ViewBag.ID = id;
+            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+            // Dropdown of doctors
+            var infoDoctores = WS.ListaDoctores();
+            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+            for (int i = 0; i < infoDoctores.Length; i++)
+            {
+                MAppointmentList doctor = new MAppointmentList();
+                doctor.DoctorID = infoDoctores[i].DoctorID;
+                doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                listaDoctores.Add(doctor);
+            }
+            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
             return View();
         }
+        /// <summary>
+        /// Method to update information of an apointment 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cita"></param>
+        /// <returns></returns>
+        // GET: UpdateAppointment
+        [HttpPost]
+        public ActionResult UpdateAppointment(int id, MAppointmentList cita)
+        {
+            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+            // Dropdown of doctors
+            var infoDoctores = WS.ListaDoctores();
+            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+            for (int i = 0; i < infoDoctores.Length; i++)
+            {
+                MAppointmentList doctor = new MAppointmentList();
+                doctor.DoctorID = infoDoctores[i].DoctorID;
+                doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                listaDoctores.Add(doctor);
+            }
+            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
+            WS.ModifyAppointment(id, cita.DoctorID + "", cita.Fecha + "", cita.Detalles, cita.Comentarios);
+            return RedirectToAction("AppointmentList", "Appointment");
+        }
 
-        
     }
 }

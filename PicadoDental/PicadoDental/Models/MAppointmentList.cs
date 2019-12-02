@@ -7,7 +7,7 @@ namespace PicadoDental.Models
 {
     public class MAppointmentList
     {
-       
+
         public DateTime Fecha { get; set; }
         public String ClienteNombre { get; set; }
         public String ClienteApellidos { get; set; }
@@ -21,5 +21,8 @@ namespace PicadoDental.Models
         public String ClienteCorreo { get; set; }
         public String Comentarios { get; set; }
         public int CitaID { get; set; }
+        public int DoctorID { get; set; }
+
+
     }
 }
