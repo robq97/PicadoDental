@@ -40,7 +40,7 @@ namespace PicadoDental.Controllers
             }
         
 
-            return RedirectToAction("Admin", "Admin");
+            return RedirectToAction("NewAdmin", "Admin");
         }
 
         public Boolean validacion (string contrasena, string confirmacion)
@@ -51,14 +51,6 @@ namespace PicadoDental.Controllers
             }
             return false;
         }
-        
-        
-
-        // GET: Admin
-        public ActionResult Secretary()
-        {
-            return View();
-        }
 
         public ActionResult AddNewSecretary(
             string FirstName,
@@ -67,14 +59,14 @@ namespace PicadoDental.Controllers
             int Id,
             string Phone,
             string Email,
-            int Gender,
+            string Gender,
             string usuario,
             string contrasena,
             int tipoCuentaID = 2)
         {
-            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender, Id, tipoCuentaID, usuario, contrasena);
+            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
 
-            return RedirectToAction("AddNewSecretary", "Secretary");
+            return RedirectToAction("NewSecretary", "Admin");
         }
     }
 }
