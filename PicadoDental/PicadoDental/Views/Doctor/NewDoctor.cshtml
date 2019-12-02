@@ -1,7 +1,7 @@
 ﻿@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretary"))
 {
 
-@{
+{
     ViewBag.Title = "NewPerson";
 }
 <div class="container body-content green lighten-5">
@@ -62,6 +62,7 @@
             </div>
         </form>
         }
+    </div>
     </div>
 }
 @if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin") | Session["TipoUsuario"].ToString().Equals("Doctor"))
