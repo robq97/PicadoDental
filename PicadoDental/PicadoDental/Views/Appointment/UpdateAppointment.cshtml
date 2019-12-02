@@ -16,21 +16,26 @@
                     
             <div class="row">
                 <div class="row">
-                    <div class="input-field input col s2 offset-s1">
+                    <div class="input-field input col s4 offset-s1">
                         <i class="material-icons prefix">date_range</i>
                         @Html.TextBoxFor(model => model.Fecha, new
                         {
                             @class = "datepicker validate black-text",
                             @type = "text",
-                       placeholder = "Fecha cita:",
+                       placeholder = "Fecha de la cita:",
                             required = "required"
                         })
                         @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "datepicker validate black-text" })
                     </div>
+                    <div class="input-field input col s4">
+                        <i class="material-icons prefix">date_range</i>
+                        @Html.TextBoxFor(model => model.Hora, new { @class = "timepicker validate black-text", @type = "text", placeholder = "Hora de la cita:", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "datepicker validate black-text" })
+                    </div>
                     <div class="input-field input col s7">
                         <i class="material-icons prefix">assignment_ind</i>
                         @Html.DropDownListFor(model => model.DoctorID, ViewBag.Doctor as SelectList, "Seleccion un doctor", new
-                        {@class = "validate black-text",required = "required"})
+                        { @class = "validate black-text", required = "required" })
                         @Html.ValidationMessageFor(model => model.DoctorID, "", new { @class = "validate black-text" })
                     </div>
                     <divc class="row">

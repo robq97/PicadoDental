@@ -30,7 +30,7 @@ namespace PicadoDental.Controllers
         {
             WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender, Id, tipoCuentaID,usuario,contrasena);
 
-            return RedirectToAction("ClientList", "Client");
+            return RedirectToAction("DoctorList", "Doctor");
         }
 
         public Boolean validacion(string contrasena, string confirmacion)

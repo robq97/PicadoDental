@@ -66,7 +66,8 @@ namespace PicadoDental.Controllers
                 listaDoctores.Add(doctor);
             }
             ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
-            WS.NewAppointment(lista.ClienteID, lista.DoctorID, lista.Fecha.ToString(), lista.Detalles, lista.Comentarios);
+            DateTime FechaHora = lista.Fecha.Add(lista.Hora.TimeOfDay);
+            WS.NewAppointment(lista.ClienteID, lista.DoctorID, FechaHora.ToString(), lista.Detalles, lista.Comentarios);
             return RedirectToAction("AppointmentList", "Appointment");
         }
         /// <summary>
@@ -176,7 +177,8 @@ namespace PicadoDental.Controllers
                 listaDoctores.Add(doctor);
             }
             ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
-            WS.ModifyAppointment(id, cita.DoctorID + "", cita.Fecha + "", cita.Detalles, cita.Comentarios);
+            DateTime FechaHora = cita.Fecha.Add(cita.Hora.TimeOfDay);
+            WS.ModifyAppointment(id, cita.DoctorID + "", FechaHora + "", cita.Detalles, cita.Comentarios);
             return RedirectToAction("AppointmentList", "Appointment");
         }
 
