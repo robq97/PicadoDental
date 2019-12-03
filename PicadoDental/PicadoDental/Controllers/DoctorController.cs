@@ -14,12 +14,12 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
-
+        
         public ActionResult DoctorList()
         {
             return View();
         }
-
+      
         public ActionResult AddNewDoctor(
             string FirstName,
             string LastName,
@@ -27,17 +27,21 @@ namespace PicadoDental.Controllers
             int Id,
             string Phone,
             string Email,
-            int Gender,
+            string Gender,
             string usuario,
             string contrasena,
+            string confirmacion,
             int tipoCuentaID = 3)
-
         {
-            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender, Id, tipoCuentaID,usuario,contrasena);
+            if (validacion(contrasena, confirmacion))
+            {
+                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
 
+            
+            }
             return RedirectToAction("DoctorList", "Doctor");
-        }
 
+        }
         public Boolean validacion(string contrasena, string confirmacion)
         {
             if (contrasena.Equals(confirmacion))
