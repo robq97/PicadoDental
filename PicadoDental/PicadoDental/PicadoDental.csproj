@@ -137,6 +137,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MAppointmentList.cs" />
+    <Compile Include="Models\MCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,10 +183,16 @@
     <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.CitaPOCO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ListaDoctoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ListaClientesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ListaDoctoresResponse.datasource">
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\EF_PicadoDental_WS\Reference.svcmap">
@@ -236,6 +243,8 @@
     <Content Include="Views\Admin\NewAdmin.cshtml" />
     <Content Include="Views\Admin\NewSecretary.cshtml" />
     <Content Include="Views\Appointment\UpdateAppointment.cshtml" />
+    <Content Include="Views\Client\UpdateClient.cshtml" />
+    <Content Include="Views\Client\AppointmentListOfClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
