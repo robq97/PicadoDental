@@ -30,8 +30,9 @@ namespace PicadoDental.Controllers
             int tipoCuentaID = 4)
         {
             WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID,usuario,contrasena);
+            TempData["message"] = "Cliente agregado con exitosamente.";
 
-            return RedirectToAction("ClientList", "Client");
+            return RedirectToAction("NewClient", "Client");
         }
 
 
