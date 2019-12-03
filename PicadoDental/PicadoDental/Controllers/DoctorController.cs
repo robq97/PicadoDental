@@ -15,6 +15,11 @@ namespace PicadoDental.Controllers
             return View();
         }
 
+        public ActionResult DoctorList()
+        {
+            return View();
+        }
+
         public ActionResult AddNewDoctor(
             string FirstName,
             string LastName,
