@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PicadoDental.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +19,23 @@ namespace PicadoDental.Controllers
         
         public ActionResult DoctorList()
         {
-            return View();
+            var info = WS.DoctorList();
+            List<MDoctor> list = new List<MDoctor>();
+            if (info[0] != null)
+            {
+                for (int i = 0; i < info.Length; i++)
+                {
+                    MDoctor model = new MDoctor();
+                    model.PersonaID = info[i].PersonaID;
+                    model.Nombre = info[i].Nombre;
+                    model.Apellidos = info[i].Apellidos;
+                    model.Cedula = info[i].Cedula;
+                    model.Correo = info[i].Correo;
+                    model.Telefono = info[i].Telefono;
+                    list.Add(model);
+                }
+            }
+            return View(list);
         }
       
         public ActionResult AddNewDoctor(

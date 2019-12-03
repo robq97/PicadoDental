@@ -1,4 +1,6 @@
-﻿@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
+﻿@model IEnumerable<PicadoDental.Models.MCliente>
+
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
 {
     {
         ViewBag.Title = "DoctorList";
@@ -30,85 +32,41 @@
                 </div>
                 <table class="white-text centered responsive-table z-depth-4">
                     <thead class="z-depth-1 green lighten-2">
-                        <tr class="clientTableCell">
+                        <tr class="doctorTableCell">
                             <th>Cédula</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Teléfono</th>
                             <th>Correo</th>
                             <th>Citas</th>
-                            <th>Detalles</th>
+                            <th>Modificar</th>
                         </tr>
                     </thead>
                     <tbody class="green lighten-5 black-text">
-                        @*@if (Session["UserType"] != null && Session["UserType"].Equals("Admin"))
+                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
+                        {
+                            foreach (var p in Model)
                             {
-                                foreach (var p in Model)
-                                {
-                                    <tr class="clientTableCell">
-                                        <td>@p.PagoID</td>
-                                        <td>@p.Cedula</td>
-                                        <td>@p.Nombre</td>
-                                        <td>@p.DescTipoSuscripcion</td>
-                                        <td>
-                                            <a class="btn-floating  green darken-3">
-                                                <i class="material-icons">details</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                }
-                            }*@
-                        <tr class="clientTableCell">
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asdn</td>
-                            <td>
-                                <a href="/Appointment/Appointment/1" class="btn-floating  green darken-3">
-                                    <i class="material-icons">format_list_bulleted</i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="/Appointment/Appointment/1" class="btn-floating  green darken-3">
-                                    <i class="material-icons">details</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="clientTableCell">
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asdn</td>
-                            <td>
-                                <a href="/Appointment/Appointment/1" class="btn-floating  green darken-3">
-                                    <i class="material-icons">format_list_bulleted</i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="/Appointment/Appointment/2" class="btn-floating  green darken-3">
-                                    <i class="material-icons">details</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="clientTableCell">
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asd</td>
-                            <td>asdn</td>
-                            <td>
-                                <a href="/Appointment/Appointment/1" class="btn-floating  green darken-3">
-                                    <i class="material-icons">format_list_bulleted</i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="/Appointment/Appointment/3" class="btn-floating  green darken-3">
-                                    <i class="material-icons">details</i>
-                                </a>
-                            </td>
-                        </tr>
+                                <tr class="doctorTableCell">
+                                    <td>@p.Cedula</td>
+                                    <td>@p.Nombre</td>
+                                    <td>@p.Apellidos</td>
+                                    <td>@p.Telefono</td>
+                                    <td>@p.Correo</td>
+                                    <td>
+                                        <a class="btn-floating  green darken-3">
+                                            <i class="material-icons">details</i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-floating  green darken-3">
+                                            <i class="material-icons">details</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
                     </tbody>
                 </table>
             </div>
