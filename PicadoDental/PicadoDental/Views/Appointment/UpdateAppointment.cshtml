@@ -5,32 +5,41 @@
     {
         ViewBag.Title = "UpdateAppointment/{id}";
     }
-    
+        if (TempData["message"] != null)
+    {
+        <body onload="alerta()">
+        </body>
+    }
         <div class="container body-content green lighten-5">
             <div style="margin-top: 5%" class="row">
                 <div class="col s12 card-panel center green darken-3 white-text">
-                    <span class="card-title" style="font-size: 55px">Modificar cita con el ID#: @ViewBag.ID</span>
+                    <span class="card-title" style="font-size: 55px">Modificación de una cita</span>
                 </div>
                 @using (Html.BeginForm("UpdateAppointment", "Appointment", FormMethod.Post, new { @class = "", @style = "margin-top: 2%;" }))
                 {
                     
             <div class="row">
                 <div class="row">
-                    <div class="input-field input col s2 offset-s1">
+                    <div class="input-field input col s5 offset-s1">
                         <i class="material-icons prefix">date_range</i>
                         @Html.TextBoxFor(model => model.Fecha, new
                         {
                             @class = "datepicker validate black-text",
                             @type = "text",
-                       placeholder = "Fecha cita:",
+                       placeholder = "Fecha de la cita:",
                             required = "required"
                         })
                         @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "datepicker validate black-text" })
                     </div>
-                    <div class="input-field input col s7">
+                    <div class="input-field input col s4">
+                        <i class="material-icons prefix">access_time</i>
+                        @Html.TextBoxFor(model => model.Hora, new { @class = "timepicker validate black-text", @type = "text", placeholder = "Hora de la cita:", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "datepicker validate black-text" })
+                    </div>
+                    <div class="input-field input col s9 offset-s1">
                         <i class="material-icons prefix">assignment_ind</i>
                         @Html.DropDownListFor(model => model.DoctorID, ViewBag.Doctor as SelectList, "Seleccion un doctor", new
-                        {@class = "validate black-text",required = "required"})
+                        { @class = "validate black-text", required = "required" })
                         @Html.ValidationMessageFor(model => model.DoctorID, "", new { @class = "validate black-text" })
                     </div>
                     <divc class="row">
@@ -39,25 +48,40 @@
                             @Html.TextBoxFor(model => model.Detalles, new { @class = "validate black-text", @type = "text", placeholder = "Detalles:", required = "required" })
                             @Html.ValidationMessageFor(model => model.Detalles, "", new { @class = "validate black-text" })
                         </div>
-                    </divc>
+                    </div>
                     <div class="row">
-                        <div class="input-field col s9 offset-s1">
-                            <i class="material-icons prefix">note</i>
-                            @Html.TextBoxFor(model => model.Comentarios, new { @class = "validate black-text", @type = "text", placeholder = "Comentarios:", required = "required" })
-                            @Html.ValidationMessageFor(model => model.Comentarios, "", new { @class = "validate black-text" })
+                        <div class="input-field input col s4 offset-s1">
+                            <i class="material-icons prefix">assignment_ind</i>
+                            @Html.DropDownListFor(model => model.DoctorID, ViewBag.Doctor as SelectList, "Seleccion un doctor", new
+                            { @class = "validate black-text", required = "required" })
+                            @Html.ValidationMessageFor(model => model.DoctorID, "", new { @class = "validate black-text" })
+                        </div>
+                        <divc class="row">
+                            <div class="input-field col s4 offset-s1">
+                                <i class="material-icons prefix">assignment_ind</i>
+                                @Html.TextBoxFor(model => model.Detalles, new { @class = "validate black-text", @type = "text", placeholder = "Detalles:", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Detalles, "", new { @class = "validate black-text" })
+                            </div>
+                        </divc>
+                    </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s9 offset-s1">
+                                <i class="material-icons prefix">note</i>
+                                @Html.TextBoxFor(model => model.Comentarios, new { @class = "validate black-text", @type = "text", placeholder = "Comentarios:", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Comentarios, "", new { @class = "validate black-text" })
+                            </div>
+                        </div>
+                        <div class="center" style="margin-bottom: 5%">
+                            <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">
+                                Modificar
+                                <i class="material-icons right">mode_edit</i>
+                            </button>
                         </div>
                     </div>
-                    <div class="center" style="margin-bottom: 5%">
-                        <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">
-                            Modificar
-                            <i class="material-icons right">mode_edit</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        }
-            </div>
+            }
         </div>
+    </div>
 }
 @if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
 {

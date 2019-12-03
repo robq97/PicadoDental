@@ -31,12 +31,17 @@
     <main>
         @RenderBody()
     </main>
-    
+
     <footer>
         @Html.Partial("_Footer")
     </footer>
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="~/Public/Scripts/materialize.js"></script>
     <script>M.AutoInit();</script>
+    <script>
+        function alerta() {
+            M.toast({ html: "@TempData["message"]" })
+        }
+    </script>
 </body>
 </html>

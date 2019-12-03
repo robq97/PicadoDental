@@ -36,6 +36,22 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidosField;
+        
+        private int CedulaField;
+        
+        private int GeneroIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GeneroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelefonoField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -81,6 +97,84 @@ namespace PicadoDental.EF_PicadoDental_WS {
                 if ((object.ReferenceEquals(this.NombreField, value) != true)) {
                     this.NombreField = value;
                     this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Apellidos {
+            get {
+                return this.ApellidosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidosField, value) != true)) {
+                    this.ApellidosField = value;
+                    this.RaisePropertyChanged("Apellidos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int Cedula {
+            get {
+                return this.CedulaField;
+            }
+            set {
+                if ((this.CedulaField.Equals(value) != true)) {
+                    this.CedulaField = value;
+                    this.RaisePropertyChanged("Cedula");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int GeneroID {
+            get {
+                return this.GeneroIDField;
+            }
+            set {
+                if ((this.GeneroIDField.Equals(value) != true)) {
+                    this.GeneroIDField = value;
+                    this.RaisePropertyChanged("GeneroID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string Genero {
+            get {
+                return this.GeneroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GeneroField, value) != true)) {
+                    this.GeneroField = value;
+                    this.RaisePropertyChanged("Genero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string Correo {
+            get {
+                return this.CorreoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
+                    this.CorreoField = value;
+                    this.RaisePropertyChanged("Correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
                 }
             }
         }
@@ -362,6 +456,27 @@ namespace PicadoDental.EF_PicadoDental_WS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ClientList", ReplyAction="*")]
         System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ClientListResponse> ClientListAsync(PicadoDental.EF_PicadoDental_WS.ClientListRequest request);
         
+        // CODEGEN: Generating message contract since element name ListaClientesResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaClientes", ReplyAction="*")]
+        PicadoDental.EF_PicadoDental_WS.ListaClientesResponse ListaClientes(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaClientes", ReplyAction="*")]
+        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaClientesResponse> ListaClientesAsync(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request);
+        
+        // CODEGEN: Generating message contract since element name ListaGeneroResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaGenero", ReplyAction="*")]
+        PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse ListaGenero(PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaGenero", ReplyAction="*")]
+        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse> ListaGeneroAsync(PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest request);
+        
+        // CODEGEN: Generating message contract since element name ObtenerInfoClienteResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerInfoCliente", ReplyAction="*")]
+        PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse ObtenerInfoCliente(PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerInfoCliente", ReplyAction="*")]
+        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse> ObtenerInfoClienteAsync(PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest request);
+        
         // CODEGEN: Generating message contract since element name nombre from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewPerson", ReplyAction="*")]
         PicadoDental.EF_PicadoDental_WS.NewPersonResponse NewPerson(PicadoDental.EF_PicadoDental_WS.NewPersonRequest request);
@@ -396,13 +511,6 @@ namespace PicadoDental.EF_PicadoDental_WS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaDoctores", ReplyAction="*")]
         System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaDoctoresResponse> ListaDoctoresAsync(PicadoDental.EF_PicadoDental_WS.ListaDoctoresRequest request);
-        
-        // CODEGEN: Generating message contract since element name ListaClientesResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaClientes", ReplyAction="*")]
-        PicadoDental.EF_PicadoDental_WS.ListaClientesResponse ListaClientes(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaClientes", ReplyAction="*")]
-        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaClientesResponse> ListaClientesAsync(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request);
         
         // CODEGEN: Generating message contract since element name fechaHora from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewAppointment", ReplyAction="*")]
@@ -549,6 +657,196 @@ namespace PicadoDental.EF_PicadoDental_WS {
         
         public ClientListResponseBody(PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ClientListResult) {
             this.ClientListResult = ClientListResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListaClientesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListaClientes", Namespace="http://tempuri.org/", Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody Body;
+        
+        public ListaClientesRequest() {
+        }
+        
+        public ListaClientesRequest(PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ListaClientesRequestBody {
+        
+        public ListaClientesRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListaClientesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListaClientesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ListaClientesResponseBody Body;
+        
+        public ListaClientesResponse() {
+        }
+        
+        public ListaClientesResponse(PicadoDental.EF_PicadoDental_WS.ListaClientesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListaClientesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.CitaPOCO[] ListaClientesResult;
+        
+        public ListaClientesResponseBody() {
+        }
+        
+        public ListaClientesResponseBody(PicadoDental.EF_PicadoDental_WS.CitaPOCO[] ListaClientesResult) {
+            this.ListaClientesResult = ListaClientesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListaGeneroRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListaGenero", Namespace="http://tempuri.org/", Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ListaGeneroRequestBody Body;
+        
+        public ListaGeneroRequest() {
+        }
+        
+        public ListaGeneroRequest(PicadoDental.EF_PicadoDental_WS.ListaGeneroRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ListaGeneroRequestBody {
+        
+        public ListaGeneroRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListaGeneroResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListaGeneroResponse", Namespace="http://tempuri.org/", Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ListaGeneroResponseBody Body;
+        
+        public ListaGeneroResponse() {
+        }
+        
+        public ListaGeneroResponse(PicadoDental.EF_PicadoDental_WS.ListaGeneroResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListaGeneroResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ListaGeneroResult;
+        
+        public ListaGeneroResponseBody() {
+        }
+        
+        public ListaGeneroResponseBody(PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ListaGeneroResult) {
+            this.ListaGeneroResult = ListaGeneroResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerInfoClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerInfoCliente", Namespace="http://tempuri.org/", Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequestBody Body;
+        
+        public ObtenerInfoClienteRequest() {
+        }
+        
+        public ObtenerInfoClienteRequest(PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ObtenerInfoClienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        public ObtenerInfoClienteRequestBody() {
+        }
+        
+        public ObtenerInfoClienteRequestBody(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerInfoClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerInfoClienteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponseBody Body;
+        
+        public ObtenerInfoClienteResponse() {
+        }
+        
+        public ObtenerInfoClienteResponse(PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ObtenerInfoClienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ObtenerInfoClienteResult;
+        
+        public ObtenerInfoClienteResponseBody() {
+        }
+        
+        public ObtenerInfoClienteResponseBody(PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ObtenerInfoClienteResult) {
+            this.ObtenerInfoClienteResult = ObtenerInfoClienteResult;
         }
     }
     
@@ -912,67 +1210,6 @@ namespace PicadoDental.EF_PicadoDental_WS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class ListaClientesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListaClientes", Namespace="http://tempuri.org/", Order=0)]
-        public PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody Body;
-        
-        public ListaClientesRequest() {
-        }
-        
-        public ListaClientesRequest(PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class ListaClientesRequestBody {
-        
-        public ListaClientesRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class ListaClientesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListaClientesResponse", Namespace="http://tempuri.org/", Order=0)]
-        public PicadoDental.EF_PicadoDental_WS.ListaClientesResponseBody Body;
-        
-        public ListaClientesResponse() {
-        }
-        
-        public ListaClientesResponse(PicadoDental.EF_PicadoDental_WS.ListaClientesResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class ListaClientesResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public PicadoDental.EF_PicadoDental_WS.CitaPOCO[] ListaClientesResult;
-        
-        public ListaClientesResponseBody() {
-        }
-        
-        public ListaClientesResponseBody(PicadoDental.EF_PicadoDental_WS.CitaPOCO[] ListaClientesResult) {
-            this.ListaClientesResult = ListaClientesResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class NewAppointmentRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="NewAppointment", Namespace="http://tempuri.org/", Order=0)]
@@ -1201,6 +1438,77 @@ namespace PicadoDental.EF_PicadoDental_WS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PicadoDental.EF_PicadoDental_WS.ListaClientesResponse PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ListaClientes(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request) {
+            return base.Channel.ListaClientes(request);
+        }
+        
+        public PicadoDental.EF_PicadoDental_WS.CitaPOCO[] ListaClientes() {
+            PicadoDental.EF_PicadoDental_WS.ListaClientesRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequest();
+            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody();
+            PicadoDental.EF_PicadoDental_WS.ListaClientesResponse retVal = ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaClientes(inValue);
+            return retVal.Body.ListaClientesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaClientesResponse> PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ListaClientesAsync(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request) {
+            return base.Channel.ListaClientesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaClientesResponse> ListaClientesAsync() {
+            PicadoDental.EF_PicadoDental_WS.ListaClientesRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequest();
+            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody();
+            return ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaClientesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ListaGenero(PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest request) {
+            return base.Channel.ListaGenero(request);
+        }
+        
+        public PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ListaGenero() {
+            PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest();
+            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaGeneroRequestBody();
+            PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse retVal = ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaGenero(inValue);
+            return retVal.Body.ListaGeneroResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse> PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ListaGeneroAsync(PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest request) {
+            return base.Channel.ListaGeneroAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse> ListaGeneroAsync() {
+            PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaGeneroRequest();
+            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaGeneroRequestBody();
+            return ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaGeneroAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ObtenerInfoCliente(PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest request) {
+            return base.Channel.ObtenerInfoCliente(request);
+        }
+        
+        public PicadoDental.EF_PicadoDental_WS.ClientePOCO[] ObtenerInfoCliente(int id) {
+            PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest inValue = new PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest();
+            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequestBody();
+            inValue.Body.id = id;
+            PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse retVal = ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ObtenerInfoCliente(inValue);
+            return retVal.Body.ObtenerInfoClienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse> PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ObtenerInfoClienteAsync(PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest request) {
+            return base.Channel.ObtenerInfoClienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteResponse> ObtenerInfoClienteAsync(int id) {
+            PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest inValue = new PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequest();
+            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ObtenerInfoClienteRequestBody();
+            inValue.Body.id = id;
+            return ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ObtenerInfoClienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         PicadoDental.EF_PicadoDental_WS.NewPersonResponse PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.NewPerson(PicadoDental.EF_PicadoDental_WS.NewPersonRequest request) {
             return base.Channel.NewPerson(request);
         }
@@ -1339,29 +1647,6 @@ namespace PicadoDental.EF_PicadoDental_WS {
             PicadoDental.EF_PicadoDental_WS.ListaDoctoresRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaDoctoresRequest();
             inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaDoctoresRequestBody();
             return ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaDoctoresAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PicadoDental.EF_PicadoDental_WS.ListaClientesResponse PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ListaClientes(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request) {
-            return base.Channel.ListaClientes(request);
-        }
-        
-        public PicadoDental.EF_PicadoDental_WS.CitaPOCO[] ListaClientes() {
-            PicadoDental.EF_PicadoDental_WS.ListaClientesRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequest();
-            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody();
-            PicadoDental.EF_PicadoDental_WS.ListaClientesResponse retVal = ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaClientes(inValue);
-            return retVal.Body.ListaClientesResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaClientesResponse> PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap.ListaClientesAsync(PicadoDental.EF_PicadoDental_WS.ListaClientesRequest request) {
-            return base.Channel.ListaClientesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<PicadoDental.EF_PicadoDental_WS.ListaClientesResponse> ListaClientesAsync() {
-            PicadoDental.EF_PicadoDental_WS.ListaClientesRequest inValue = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequest();
-            inValue.Body = new PicadoDental.EF_PicadoDental_WS.ListaClientesRequestBody();
-            return ((PicadoDental.EF_PicadoDental_WS.EF_PicadoDentalSoap)(this)).ListaClientesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

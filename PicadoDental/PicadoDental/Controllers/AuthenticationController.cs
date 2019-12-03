@@ -7,9 +7,13 @@ using System.Web.Mvc;
 namespace PicadoDental.Controllers
 {
 
-    //[System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+    [System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     public class AuthenticationController : Controller
+
     {
+        EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+
+        HomeController home = new HomeController();
 
         //public ActionResult LogIn()
         //{
@@ -44,7 +48,6 @@ namespace PicadoDental.Controllers
 
         public ActionResult Authentication(string usuario, string password)
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             var info = WS.LogIn(usuario, password);
 
             if (info[1] != null)
@@ -66,9 +69,14 @@ namespace PicadoDental.Controllers
                     return RedirectToAction("NewAppointment", "Appointment");
                 }
             }
+            else if (info[2] == "error")
+            {
+                TempData["message"] = "Usuario y/o contraseña incorrectos.";
+                return RedirectToAction("Index", "Home");
+            }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return View("~/Views/Home/Index.cshtml");
             }
 
             return new EmptyResult();

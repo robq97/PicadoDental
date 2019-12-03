@@ -42,8 +42,71 @@
           <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cedula" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ListaClientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListaClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaClientesResult" type="tns:ArrayOfCitaPOCO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCitaPOCO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CitaPOCO" nillable="true" type="tns:CitaPOCO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CitaPOCO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteApellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorApellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detalles" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorTelefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoctorCorreo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteTelefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteCorreo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comentarios" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CitaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DoctorID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListaGenero">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListaGeneroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaGeneroResult" type="tns:ArrayOfClientePOCO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerInfoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerInfoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerInfoClienteResult" type="tns:ArrayOfClientePOCO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="NewPerson">
         <s:complexType>
           <s:sequence>
@@ -85,29 +148,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfCitaPOCO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CitaPOCO" nillable="true" type="tns:CitaPOCO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CitaPOCO">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="ClienteNombre" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ClienteApellidos" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DoctorNombre" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DoctorApellidos" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Detalles" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DoctorTelefono" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DoctorCorreo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ClienteTelefono" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ClienteCorreo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Comentarios" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CitaID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="DoctorID" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="CitaListByID">
         <s:complexType>
           <s:sequence>
@@ -129,16 +169,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ListaDoctoresResult" type="tns:ArrayOfCitaPOCO" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ListaClientes">
-        <s:complexType />
-      </s:element>
-      <s:element name="ListaClientesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ListaClientesResult" type="tns:ArrayOfCitaPOCO" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -184,6 +214,24 @@
   <wsdl:message name="ClientListSoapOut">
     <wsdl:part name="parameters" element="tns:ClientListResponse" />
   </wsdl:message>
+  <wsdl:message name="ListaClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaClientes" />
+  </wsdl:message>
+  <wsdl:message name="ListaClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListaGeneroSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaGenero" />
+  </wsdl:message>
+  <wsdl:message name="ListaGeneroSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaGeneroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerInfoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoCliente" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerInfoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoClienteResponse" />
+  </wsdl:message>
   <wsdl:message name="NewPersonSoapIn">
     <wsdl:part name="parameters" element="tns:NewPerson" />
   </wsdl:message>
@@ -214,12 +262,6 @@
   <wsdl:message name="ListaDoctoresSoapOut">
     <wsdl:part name="parameters" element="tns:ListaDoctoresResponse" />
   </wsdl:message>
-  <wsdl:message name="ListaClientesSoapIn">
-    <wsdl:part name="parameters" element="tns:ListaClientes" />
-  </wsdl:message>
-  <wsdl:message name="ListaClientesSoapOut">
-    <wsdl:part name="parameters" element="tns:ListaClientesResponse" />
-  </wsdl:message>
   <wsdl:message name="NewAppointmentSoapIn">
     <wsdl:part name="parameters" element="tns:NewAppointment" />
   </wsdl:message>
@@ -241,6 +283,18 @@
       <wsdl:input message="tns:ClientListSoapIn" />
       <wsdl:output message="tns:ClientListSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ListaClientes">
+      <wsdl:input message="tns:ListaClientesSoapIn" />
+      <wsdl:output message="tns:ListaClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaGenero">
+      <wsdl:input message="tns:ListaGeneroSoapIn" />
+      <wsdl:output message="tns:ListaGeneroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoCliente">
+      <wsdl:input message="tns:ObtenerInfoClienteSoapIn" />
+      <wsdl:output message="tns:ObtenerInfoClienteSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="NewPerson">
       <wsdl:input message="tns:NewPersonSoapIn" />
       <wsdl:output message="tns:NewPersonSoapOut" />
@@ -260,10 +314,6 @@
     <wsdl:operation name="ListaDoctores">
       <wsdl:input message="tns:ListaDoctoresSoapIn" />
       <wsdl:output message="tns:ListaDoctoresSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ListaClientes">
-      <wsdl:input message="tns:ListaClientesSoapIn" />
-      <wsdl:output message="tns:ListaClientesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="NewAppointment">
       <wsdl:input message="tns:NewAppointmentSoapIn" />
@@ -287,6 +337,33 @@
     </wsdl:operation>
     <wsdl:operation name="ClientList">
       <soap:operation soapAction="http://tempuri.org/ClientList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaClientes">
+      <soap:operation soapAction="http://tempuri.org/ListaClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaGenero">
+      <soap:operation soapAction="http://tempuri.org/ListaGenero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoCliente">
+      <soap:operation soapAction="http://tempuri.org/ObtenerInfoCliente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -339,15 +416,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ListaClientes">
-      <soap:operation soapAction="http://tempuri.org/ListaClientes" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="NewAppointment">
       <soap:operation soapAction="http://tempuri.org/NewAppointment" style="document" />
       <wsdl:input>
@@ -380,6 +448,33 @@
     </wsdl:operation>
     <wsdl:operation name="ClientList">
       <soap12:operation soapAction="http://tempuri.org/ClientList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaClientes">
+      <soap12:operation soapAction="http://tempuri.org/ListaClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaGenero">
+      <soap12:operation soapAction="http://tempuri.org/ListaGenero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoCliente">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerInfoCliente" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -425,15 +520,6 @@
     </wsdl:operation>
     <wsdl:operation name="ListaDoctores">
       <soap12:operation soapAction="http://tempuri.org/ListaDoctores" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ListaClientes">
-      <soap12:operation soapAction="http://tempuri.org/ListaClientes" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

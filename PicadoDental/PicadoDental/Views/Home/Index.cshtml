@@ -4,12 +4,22 @@
 
 <style>
     body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            background-image: url("../../Public/IMG/backgroundlogin2.jpg")
-        }
+        background-image: url("../../Public/IMG/backgroundlogin2.jpg")
+    }
 </style>
+
+
+@if (TempData["message"] != null)
+{
+    <body onload="alerta()">
+    </body>
+}
+
+<script>
+        function alerta() {
+            M.toast({ html: "@TempData["message"]" })
+        }
+</script>
 
 <section class="section section-login">
     <div class="container" style="margin-top: 8%">
@@ -19,19 +29,19 @@
                     <h3>Inicio de Sesión</h3>
                     @using (Html.BeginForm("Authentication", "Authentication"))
                     {
-                    <form>
-                        <div class="input-field">
-                            <i class="material-icons prefix">account_circle</i>
-                            <input type="text" id="usuario"  name="usuario" required="" maxlength="10">
-                            <label class="white-text" for="usuario">Usuario</label>
-                        </div>
-                        <div class="input-field">
-                            <i class="material-icons prefix">lock</i>
-                            <input type="password" id="password"  name="password" required="" maxlength="15">
-                            <label class="white-text" for="password">Password</label>
-                        </div>
-                        <input type="submit" value="Iniciar Sesión" class="btn btn-large green darken-3">
-                    </form>
+                        <form>
+                            <div class="input-field">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input type="text" id="usuario" name="usuario" required="" maxlength="10">
+                                <label class="white-text" for="usuario">Usuario</label>
+                            </div>
+                            <div class="input-field">
+                                <i class="material-icons prefix">lock</i>
+                                <input type="password" id="password" name="password" required="" maxlength="15">
+                                <label class="white-text" for="password">Password</label>
+                            </div>
+                            <input type="submit" value="Iniciar Sesión" class="btn btn-large green darken-3">
+                        </form>
                     }
                 </div>
             </div>

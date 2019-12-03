@@ -8,63 +8,73 @@
     </nav>
 }
 
-<style>
-    .hotfixDropdownItems {
-        min-width: 160px;
+    <style>
+        .hotfixDropdownItems {
+            min-width: 160px;
+        }
+    </style>
+    @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
+    {
+        <nav>
+            <div class="nav-wrapper">
+                <ul id="dropdown-clients" class="dropdown-content hotfixDropdownItems">
+                    <li>@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
+                    <li>@Html.ActionLink("Nuevo cliente", "NewClient", "Client")</li>
+                </ul>
+                <ul id="dropdown-clients" class="dropdown-content hotfixDropdownItems">
+                    <li>@Html.ActionLink("Lista de doctores", "DoctorList", "Doctor")</li>
+                    <li>@Html.ActionLink("Nuevo doctor", "NewDoctor", "Doctor")</li>
+                </ul>
+                <ul id="dropdown-appointments" class="dropdown-content hotfixDropdownItems">
+                    <li>@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
+                    <li>@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
+                </ul>
+                <div class="nav-wrapper blue darken-3">
+                    <a>@Html.ActionLink("Picado Dental Center", "NewClient", "Client", new { area = "" }, new { @class = "brand-logo center" })</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Doctores<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-appointments">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li class="red darken-2 modal-trigger" href="#logoutConfirmation">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     }
-</style>
-@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
-{
-    <nav>
-        <div class="nav-wrapper">
-            <ul id="dropdown-clients" class="dropdown-content hotfixDropdownItems">
-                <li>@Html.ActionLink("Lista de clientes", "ClientList", "Client")</li>
-                <li>@Html.ActionLink("Nuevo cliente", "NewClient", "Client")</li>
-            </ul>
-            <ul id="dropdown-clients" class="dropdown-content hotfixDropdownItems">
-                <li>@Html.ActionLink("Lista de doctores", "DoctorList", "Doctor")</li>
-                <li>@Html.ActionLink("Nuevo doctor", "NewDoctor", "Doctor")</li>
-            </ul>
-            <ul id="dropdown-appointments" class="dropdown-content hotfixDropdownItems">
-                <li>@Html.ActionLink("Lista de citas", "AppointmentList", "Appointment")</li>
-                <li>@Html.ActionLink("Nueva cita", "NewAppointment", "Appointment")</li>
-            </ul>
+    @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Doctor"))
+    {
+        <nav>
             <div class="nav-wrapper blue darken-3">
-                <a> @Html.ActionLink("Picado Dental Center", "NewClient", "Client", new { area = "" }, new { @class = "brand-logo center" })</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-clients">Doctores<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a class="blue darken-3 dropdown-trigger" data-target="dropdown-appointments">Citas<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
+                <a href="#" data-target="menu-responsive" class="brand-logo"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li>@Html.ActionLink("Nueva cita", "newAppointment", "Appointment")</li>
+                    <li>@Html.ActionLink("Mis pacientes", "ClientList", "Client")</li>
+                    <li>@Html.ActionLink("Mis citas", "AppointmentList", "Appointment")</li>
+                    <li class="red darken-2 modal-trigger" href="#logoutConfirmation">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
                 </ul>
             </div>
+        </nav>
+    }
+    @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
+    {
+        <nav>
+            <div class="nav-wrapper blue-grey darken-1">
+                <a href="#" data-target="menu-responsive" class="brand-logo"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li>@Html.ActionLink("Nueva secretaria", "NewSecretary", "Admin")</li>
+                    <li>@Html.ActionLink("Nuevo administrador", "NewAdmin", "Admin")</li>
+                    <li class="red darken-2 modal-trigger" href="#logoutConfirmation">@Html.ActionLink("Cerrar Sesión", "LogOut")</li>
+                </ul>
+            </div>
+        </nav>
+    }
+
+    <div id="logoutConfirmation" class="modal">
+        <div class="modal-content">
+            <h5>¿Esta seguro/a de que desea finalizar la sesión?</h5>
         </div>
-    </nav>
-}
-@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Doctor"))
-{
-    <nav>
-        <div class="nav-wrapper blue darken-3">
-            <a href="#" data-target="menu-responsive" class="brand-logo"></a>
-            <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Nueva cita", "newAppointment", "Appointment")</li>
-                <li>@Html.ActionLink("Mis pacientes", "ClientList", "Client")</li>
-                <li>@Html.ActionLink("Mis citas", "AppointmentList", "Appointment")</li>
-                <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
-            </ul>
+        <div class="modal-footer">
+            <a href="@Url.Action("LogOut", "Authentication")" class="modal-close waves-effect waves-red btn-flat">Cerrar Sesión</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Mantener Sesión</a>
         </div>
-    </nav>
-}
-@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
-{
-    <nav>
-        <div class="nav-wrapper blue darken-3">
-            <a href="#" data-target="menu-responsive" class="brand-logo"></a>
-            <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Nueva secretaria", "NewSecretary", "Admin")</li>
-                <li>@Html.ActionLink("Nuevo administrador", "NewAdmin", "Admin")</li>
-                <li class="red darken-2">@Html.ActionLink("Cerrar Sesión", "LogOut", "Authentication")</li>
-            </ul>
-        </div>
-    </nav>
-}
+    </div>
