@@ -9,16 +9,15 @@
 </style>
 
 
-@if (ViewBag.Message != null)
+@if (TempData["message"] != null)
 {
     <body onload="alerta()">
     </body>
-
 }
 
 <script>
         function alerta() {
-            M.toast({ html: "@ViewBag.Message" })
+            M.toast({ html: "@TempData["message"]" })
         }
 </script>
 

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace PicadoDental.Controllers
 {
 
-    //[System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+    [System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
     public class AuthenticationController : Controller
 
     {
@@ -49,7 +49,6 @@ namespace PicadoDental.Controllers
         public ActionResult Authentication(string usuario, string password)
         {
             var info = WS.LogIn(usuario, password);
-            ViewBag.Message = null;
 
             if (info[1] != null)
             {
@@ -72,14 +71,11 @@ namespace PicadoDental.Controllers
             }
             else if (info[2] == "error")
             {
-                ViewBag.Message = "Usuario y/o contraseña incorrectos.";
-                usuario = null;
-                password = null;
-                return View("~/Views/Home/Index.cshtml");
+                TempData["message"] = "Usuario y/o contraseña incorrectos.";
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                ViewBag.Message = null;
                 return View("~/Views/Home/Index.cshtml");
             }
 
