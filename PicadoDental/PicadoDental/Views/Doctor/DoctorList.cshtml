@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PicadoDental.Models.MCliente>
+﻿@model IEnumerable<PicadoDental.Models.MDoctor>
 
 @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
 {
@@ -13,7 +13,7 @@
 
         .clientTableCell > td {
             border-right: solid 1px #2E7D32;
-            max-width: 1px;
+            max-width: 1px;z
         }
 
             .clientTableCell > td > i {
@@ -47,7 +47,7 @@
                         {
                             foreach (var p in Model)
                             {
-                                <tr class="doctorTableCell">
+                                <tr class="clientTableCell">
                                     <td>@p.Cedula</td>
                                     <td>@p.Nombre</td>
                                     <td>@p.Apellidos</td>
@@ -66,7 +66,6 @@
                                 </tr>
                             }
                         }
-
                     </tbody>
                 </table>
             </div>

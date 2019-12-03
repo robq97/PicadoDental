@@ -295,6 +295,7 @@ C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\Syste
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\Newtonsoft.Json.xml
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\Antlr3.Runtime.pdb
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csprojAssemblyReference.cache
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csproj.CopyComplete
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.dll
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.pdb
