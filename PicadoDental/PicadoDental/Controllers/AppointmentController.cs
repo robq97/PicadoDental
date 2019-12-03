@@ -9,10 +9,11 @@ namespace PicadoDental.Controllers
 {
     public class AppointmentController : Controller
     {
+        EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+
         //GET: NewAppointment
         public ActionResult NewAppointment()
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             // Dropdown of clients
             var infoClientes = WS.ListaClientes();
             List<MAppointmentList> listaClientes = new List<MAppointmentList>();
@@ -42,7 +43,6 @@ namespace PicadoDental.Controllers
         [HttpPost]
         public ActionResult NewAppointment(MAppointmentList lista)
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             // Dropdown of clients
             var infoClientes = WS.ListaClientes();
             List<MAppointmentList> listaClientes = new List<MAppointmentList>();
@@ -68,7 +68,8 @@ namespace PicadoDental.Controllers
             ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
             DateTime FechaHora = lista.Fecha.Add(lista.Hora.TimeOfDay);
             WS.NewAppointment(lista.ClienteID, lista.DoctorID, FechaHora.ToString(), lista.Detalles, lista.Comentarios);
-            return RedirectToAction("AppointmentList", "Appointment");
+            TempData["message"] = "Cita creada exitosamente.";
+            return RedirectToAction("NewAppointment", "Appointment");
         }
         /// <summary>
         /// Method to apply for appointment list
@@ -77,7 +78,6 @@ namespace PicadoDental.Controllers
         // GET: AppointmentList
         public ActionResult AppointmentList()
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             var info = WS.CitaList();
             List<MAppointmentList> list = new List<MAppointmentList>();
             if(info [0] != null)
@@ -106,7 +106,6 @@ namespace PicadoDental.Controllers
         // GET: Appointment
         public ActionResult Appointment(int id)
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             var info = WS.CitaListByID(id);
             List<MAppointmentList> list = new List<MAppointmentList>();
             if (info[0] != null)
@@ -141,7 +140,6 @@ namespace PicadoDental.Controllers
         public ActionResult UpdateAppointment(int id)
         {
             ViewBag.ID = id;
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             // Dropdown of doctors
             var infoDoctores = WS.ListaDoctores();
             List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
@@ -165,7 +163,6 @@ namespace PicadoDental.Controllers
         [HttpPost]
         public ActionResult UpdateAppointment(int id, MAppointmentList cita)
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
             // Dropdown of doctors
             var infoDoctores = WS.ListaDoctores();
             List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
@@ -179,7 +176,8 @@ namespace PicadoDental.Controllers
             ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
             DateTime FechaHora = cita.Fecha.Add(cita.Hora.TimeOfDay);
             WS.ModifyAppointment(id, cita.DoctorID + "", FechaHora + "", cita.Detalles, cita.Comentarios);
-            return RedirectToAction("AppointmentList", "Appointment");
+            TempData["message"] = "Cita modificada exitosamente.";
+            return RedirectToAction("UpdateAppointment", "Appointment");
         }
 
     }

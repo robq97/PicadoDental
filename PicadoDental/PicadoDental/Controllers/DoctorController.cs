@@ -36,8 +36,7 @@ namespace PicadoDental.Controllers
             if (validacion(contrasena, confirmacion))
             {
                 WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
-
-            
+                TempData["message"] = "Doctor creado exitosamente.";
             }
             return RedirectToAction("DoctorList", "Doctor");
 
@@ -47,6 +46,10 @@ namespace PicadoDental.Controllers
             if (contrasena.Equals(confirmacion))
             {
                 return true;
+            }
+            else
+            {
+                TempData["message"] = "Las contraseñas no coinciden.";
             }
             return false;
         }

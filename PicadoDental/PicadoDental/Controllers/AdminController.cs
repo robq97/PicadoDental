@@ -37,7 +37,7 @@ namespace PicadoDental.Controllers
             {
                 WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
 
-                TempData["message"] = "Admin creado con exito.";
+                TempData["message"] = "Administrador creado exitosamente.";
             }
         
 
@@ -74,7 +74,7 @@ namespace PicadoDental.Controllers
             if (validacion(contrasena, confirmacion))
             {
                 WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
-                TempData["message"] = "Secretario/a creado con exito.";
+                TempData["message"] = "Secretario/a creado exitosamente.";
             }
                 
 
