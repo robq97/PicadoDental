@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Models\MAppointmentList.cs" />
     <Compile Include="Models\MCliente.cs" />
+    <Compile Include="Models\MDoctor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ListaGeneroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.DoctorListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.DoctorPOCO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\EF_PicadoDental_WS\Reference.svcmap">

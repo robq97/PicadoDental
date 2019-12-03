@@ -148,6 +148,31 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DoctorList">
+        <s:complexType />
+      </s:element>
+      <s:element name="DoctorListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoctorListResult" type="tns:ArrayOfDoctorPOCO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDoctorPOCO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DoctorPOCO" nillable="true" type="tns:DoctorPOCO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DoctorPOCO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cedula" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="CitaListByID">
         <s:complexType>
           <s:sequence>
@@ -250,6 +275,12 @@
   <wsdl:message name="CitaListSoapOut">
     <wsdl:part name="parameters" element="tns:CitaListResponse" />
   </wsdl:message>
+  <wsdl:message name="DoctorListSoapIn">
+    <wsdl:part name="parameters" element="tns:DoctorList" />
+  </wsdl:message>
+  <wsdl:message name="DoctorListSoapOut">
+    <wsdl:part name="parameters" element="tns:DoctorListResponse" />
+  </wsdl:message>
   <wsdl:message name="CitaListByIDSoapIn">
     <wsdl:part name="parameters" element="tns:CitaListByID" />
   </wsdl:message>
@@ -306,6 +337,10 @@
     <wsdl:operation name="CitaList">
       <wsdl:input message="tns:CitaListSoapIn" />
       <wsdl:output message="tns:CitaListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoctorList">
+      <wsdl:input message="tns:DoctorListSoapIn" />
+      <wsdl:output message="tns:DoctorListSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CitaListByID">
       <wsdl:input message="tns:CitaListByIDSoapIn" />
@@ -391,6 +426,15 @@
     </wsdl:operation>
     <wsdl:operation name="CitaList">
       <soap:operation soapAction="http://tempuri.org/CitaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoctorList">
+      <soap:operation soapAction="http://tempuri.org/DoctorList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -502,6 +546,15 @@
     </wsdl:operation>
     <wsdl:operation name="CitaList">
       <soap12:operation soapAction="http://tempuri.org/CitaList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoctorList">
+      <soap12:operation soapAction="http://tempuri.org/DoctorList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
