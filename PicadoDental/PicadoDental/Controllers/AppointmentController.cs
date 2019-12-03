@@ -98,6 +98,7 @@ namespace PicadoDental.Controllers
             }
             return View(list);
         }
+
         /// <summary>
         /// Method to apply a details of specific appointment
         /// </summary>
