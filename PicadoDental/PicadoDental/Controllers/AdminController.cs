@@ -35,8 +35,9 @@ namespace PicadoDental.Controllers
         {
             if (validacion(contrasena, confirmacion))
             {
-
                 WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+
+                TempData["message"] = "Admin creado con exito.";
             }
         
 
@@ -48,6 +49,10 @@ namespace PicadoDental.Controllers
             if (contrasena.Equals(confirmacion))
             {
                 return true;
+            }
+            else
+            {
+                TempData["message"] = "Las contraseñas no coinciden.";
             }
             return false;
         }
@@ -62,9 +67,16 @@ namespace PicadoDental.Controllers
             string Gender,
             string usuario,
             string contrasena,
+            string confirmacion,
             int tipoCuentaID = 2)
+
         {
-            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+            if (validacion(contrasena, confirmacion))
+            {
+                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+                TempData["message"] = "Secretario/a creado con exito.";
+            }
+                
 
             return RedirectToAction("NewSecretary", "Admin");
         }
