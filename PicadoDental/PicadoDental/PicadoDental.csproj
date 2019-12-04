@@ -213,6 +213,7 @@
     <None Include="Connected Services\EF_PicadoDental_WS\EF_PicadoDental.wsdl" />
     <None Include="Public\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Public\IMG\backgroundlogin2.jpg" />
+    <Content Include="Public\IMG\mainBackground.jpg" />
     <Content Include="Public\Scripts\jquery-3.3.1.js" />
     <Content Include="Public\Scripts\jquery-3.3.1.min.js" />
     <Content Include="Public\Scripts\jquery-3.3.1.slim.js" />
