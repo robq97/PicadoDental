@@ -48,35 +48,48 @@ namespace PicadoDental.Controllers
 
         public ActionResult Authentication(string usuario, string password)
         {
-            var info = WS.LogIn(usuario, password);
-
-            if (info[1] != null)
+            try
             {
+                var info = WS.LogIn(usuario, password);
 
-                if (info[1] == "1")
+                if (info[1] != null)
                 {
-                    Session["TipoUsuario"] = "Admin";
-                    return RedirectToAction("NewSecretary", "Admin"); //redireccionar a nueva secretaria
+
+                    if (info[1] == "1")
+                    {
+                        Session["TipoUsuario"] = "Admin";
+                        return RedirectToAction("NewSecretary", "Admin"); //redireccionar a nueva secretaria
+                    }
+                    else if (info[1] == "2")
+                    {
+                        Session["TipoUsuario"] = "Secretaria";
+                        return RedirectToAction("NewClient", "Client");
+                    }
+                    else if (info[1] == "3")
+                    {
+                        Session["TipoUsuario"] = "Doctor";
+                        return RedirectToAction("NewAppointment", "Appointment");
+                    }
                 }
-                else if (info[1] == "2")
+                else if (info[2] == "error")
                 {
-                    Session["TipoUsuario"] = "Secretaria";
-                    return RedirectToAction("NewClient", "Client");
+                    TempData["message"] = "Usuario y/o contraseña incorrectos.";
+                    return RedirectToAction("Index", "Home");
                 }
-                else if (info[1] == "3")
+                else
                 {
-                    Session["TipoUsuario"] = "Doctor";
-                    return RedirectToAction("NewAppointment", "Appointment");
+                    return View("~/Views/Home/Index.cshtml");
                 }
             }
-            else if (info[2] == "error")
+            catch (System.ServiceModel.EndpointNotFoundException exception)
             {
-                TempData["message"] = "Usuario y/o contraseña incorrectos.";
-                return RedirectToAction("Index", "Home");
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
             }
-            else
+            catch (Exception exception)
             {
-                return View("~/Views/Home/Index.cshtml");
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
             }
 
             return new EmptyResult();

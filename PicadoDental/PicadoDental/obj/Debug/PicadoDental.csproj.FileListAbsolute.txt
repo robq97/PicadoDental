@@ -72,7 +72,6 @@ C:\Users\user\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\Micros
 C:\Users\user\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csproj.CopyComplete
 C:\Users\user\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.dll
 C:\Users\user\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.pdb
-C:\Users\User\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csproj.CoreCompileInputs.cache
 C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\roslyn\System.ValueTuple.dll
 C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\roslyn\System.Xml.XPath.XDocument.dll
@@ -299,3 +298,4 @@ C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csproj.CopyComplete
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.dll
 C:\Users\maria\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.pdb
+C:\Users\user\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csprojAssemblyReference.cache

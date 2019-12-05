@@ -15,40 +15,65 @@ namespace PicadoDental.Controllers
         // GET: Cliente
         public ActionResult NewClient()
         {
-            // Dropdown of gender
-            var infoClientes = WS.ListaGenero();
-            List<MCliente> listaClientes = new List<MCliente>();
-            for (int i = 0; i < infoClientes.Length; i++)
+            try
             {
-                MCliente genero = new MCliente();
-                genero.GeneroID = infoClientes[i].GeneroID;
-                genero.Genero = infoClientes[i].Genero;
-                listaClientes.Add(genero);
+                // Dropdown of gender
+                var infoClientes = WS.ListaGenero();
+                List<MCliente> listaClientes = new List<MCliente>();
+                for (int i = 0; i < infoClientes.Length; i++)
+                {
+                    MCliente genero = new MCliente();
+                    genero.GeneroID = infoClientes[i].GeneroID;
+                    genero.Genero = infoClientes[i].Genero;
+                    listaClientes.Add(genero);
+                }
+                ViewBag.Genero = new SelectList(listaClientes, "GeneroID", "Genero");
+
+                return View();
             }
-            ViewBag.Genero = new SelectList(listaClientes, "GeneroID", "Genero");
-
-
-            return View();
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         // GET: Cliente
         [HttpPost]
         public ActionResult NewClient(MCliente cliente)
         {
-            // Dropdown of gender
-            var infoClientes = WS.ListaGenero();
-            List<MCliente> listaClientes = new List<MCliente>();
-            for (int i = 0; i < infoClientes.Length; i++)
+            try
             {
-                MCliente genero = new MCliente();
-                genero.GeneroID = infoClientes[i].GeneroID;
-                genero.Genero = infoClientes[i].Genero;
-                listaClientes.Add(genero);
+                // Dropdown of gender
+                var infoClientes = WS.ListaGenero();
+                List<MCliente> listaClientes = new List<MCliente>();
+                for (int i = 0; i < infoClientes.Length; i++)
+                {
+                    MCliente genero = new MCliente();
+                    genero.GeneroID = infoClientes[i].GeneroID;
+                    genero.Genero = infoClientes[i].Genero;
+                    listaClientes.Add(genero);
+                }
+                ViewBag.Genero = new SelectList(listaClientes, "GeneroID", "Genero");
+                WS.NewPerson(cliente.Nombre, cliente.PrimerApellido, cliente.SegundoApellido, cliente.Telefono,
+                    cliente.Correo, cliente.GeneroID, cliente.Cedula, 4, "", "");
+                return RedirectToAction("ClientList", "Client");
             }
-            ViewBag.Genero = new SelectList(listaClientes, "GeneroID", "Genero");
-            WS.NewPerson(cliente.Nombre, cliente.PrimerApellido, cliente.SegundoApellido, cliente.Telefono,
-                cliente.Correo, cliente.GeneroID,cliente.Cedula, 4, "","");
-            return RedirectToAction("ClientList", "Client");
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         public ActionResult AddNewClient(
@@ -63,54 +88,93 @@ namespace PicadoDental.Controllers
             string contrasena= "",
             int tipoCuentaID = 4)
         {
-            WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender,Id,tipoCuentaID,usuario,contrasena);
-            TempData["message"] = "Cliente agregado con exitosamente.";
+            try
+            {
+                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Gender, Id, tipoCuentaID, usuario, contrasena);
+                TempData["message"] = "Cliente agregado con exitosamente.";
 
-            return RedirectToAction("NewClient", "Client");
+                return RedirectToAction("NewClient", "Client");
+            }
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         public ActionResult ClientList()
         {
-            var info = WS.ClientList();
-            List<MCliente> list = new List<MCliente>();
-            if (info[0] != null)
+            try
             {
-                for (int i = 0; i < info.Length; i++)
+                var info = WS.ClientList();
+                List<MCliente> list = new List<MCliente>();
+                if (info[0] != null)
                 {
-                    MCliente model = new MCliente();
-                    model.ClienteID = info[i].ClienteID;
-                    model.PersonaID = info[i].PersonaID;
-                    model.Nombre = info[i].Nombre;
-                    model.Apellidos = info[i].Apellidos;
-                    model.Cedula = info[i].Cedula;
-                    model.Genero = info[i].Genero;
-                    list.Add(model);
+                    for (int i = 0; i < info.Length; i++)
+                    {
+                        MCliente model = new MCliente();
+                        model.ClienteID = info[i].ClienteID;
+                        model.PersonaID = info[i].PersonaID;
+                        model.Nombre = info[i].Nombre;
+                        model.Apellidos = info[i].Apellidos;
+                        model.Cedula = info[i].Cedula;
+                        model.Genero = info[i].Genero;
+                        list.Add(model);
+                    }
                 }
+                return View(list);
             }
-            return View(list);
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         public ActionResult Client(int id)
         {
-            var info = WS.ObtenerInfoCliente(id);
-            List<MCliente> list = new List<MCliente>();
-            if (info[0] != null)
+            try
             {
-                for (int i = 0; i < info.Length; i++)
+                var info = WS.ObtenerInfoCliente(id);
+                List<MCliente> list = new List<MCliente>();
+                if (info[0] != null)
                 {
-                    MCliente model = new MCliente();
-                    model.ClienteID = info[i].ClienteID;
-                    model.PersonaID = info[i].PersonaID;
-                    model.Nombre = info[i].Nombre;
-                    model.Apellidos = info[i].Apellidos;
-                    model.Cedula = info[i].Cedula;
-                    model.Genero = info[i].Genero;
-                    model.Telefono = info[i].Telefono;
-                    model.Correo = info[i].Correo;
-                    list.Add(model);
+                    for (int i = 0; i < info.Length; i++)
+                    {
+                        MCliente model = new MCliente();
+                        model.ClienteID = info[i].ClienteID;
+                        model.PersonaID = info[i].PersonaID;
+                        model.Nombre = info[i].Nombre;
+                        model.Apellidos = info[i].Apellidos;
+                        model.Cedula = info[i].Cedula;
+                        model.Genero = info[i].Genero;
+                        model.Telefono = info[i].Telefono;
+                        model.Correo = info[i].Correo;
+                        list.Add(model);
+                    }
                 }
+                return View(list);
             }
-            return View(list);
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         /// <summary>
@@ -120,31 +184,44 @@ namespace PicadoDental.Controllers
         // GET: AppointmentListOfClient
         public ActionResult AppointmentListOfClient(int id)
         {
-            EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
-            var info = WS.CitaList();
-            
-            List<MAppointmentList> list = new List<MAppointmentList>();
-            if (info[0] != null)
+            try
             {
-                for (int i = 0; i < info.Length; i++)
+                EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
+                var info = WS.CitaList();
+
+                List<MAppointmentList> list = new List<MAppointmentList>();
+                if (info[0] != null)
                 {
-                    if (info[i].ClienteID == id)
+                    for (int i = 0; i < info.Length; i++)
                     {
-                        ViewBag.Paciente = info[i].ClienteNombre + " " + info[i].ClienteApellidos;
-                        MAppointmentList model = new MAppointmentList();
-                        model.Fecha = info[i].Fecha;
-                        model.ClienteNombre = info[i].ClienteNombre;
-                        model.ClienteApellidos = info[i].ClienteApellidos;
-                        model.DoctorNombre = info[i].DoctorNombre;
-                        model.DoctorApellidos = info[i].DoctorApellidos;
-                        model.Detalles = info[i].Detalles;
-                        model.ClienteID = info[i].ClienteID;
-                        model.CitaID = info[i].CitaID;
-                        list.Add(model);
+                        if (info[i].ClienteID == id)
+                        {
+                            ViewBag.Paciente = info[i].ClienteNombre + " " + info[i].ClienteApellidos;
+                            MAppointmentList model = new MAppointmentList();
+                            model.Fecha = info[i].Fecha;
+                            model.ClienteNombre = info[i].ClienteNombre;
+                            model.ClienteApellidos = info[i].ClienteApellidos;
+                            model.DoctorNombre = info[i].DoctorNombre;
+                            model.DoctorApellidos = info[i].DoctorApellidos;
+                            model.Detalles = info[i].Detalles;
+                            model.ClienteID = info[i].ClienteID;
+                            model.CitaID = info[i].CitaID;
+                            list.Add(model);
+                        }
                     }
                 }
+                return View(list);
             }
-            return View(list);
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         public ActionResult UpdateClient(int id)

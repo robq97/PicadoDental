@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "500 Internal Server Error";
+}
+
+<style>
+    body {
+        background-image: url("../../Public/IMG/backgroundlogin2.jpg")
+    }
+</style>
+
+<section class="section section-login">
+    <div class="container green lighten-5" style="margin-top: 3%">
+        <div class="card center green darken-3 white-text" style="font-size: 55px">
+            500 Internal Server Error
+        </div>
+        <div style="padding: 10px 20px 30px 20px;">
+            Error: @Session["Error"]
+        </div>
+    </div>
+</section>
