@@ -14,62 +14,88 @@ namespace PicadoDental.Controllers
         //GET: NewAppointment
         public ActionResult NewAppointment()
         {
-            // Dropdown of clients
-            var infoClientes = WS.ListaClientes();
-            List<MAppointmentList> listaClientes = new List<MAppointmentList>();
-            for (int i = 0; i < infoClientes.Length; i++)
+            try
             {
-                MAppointmentList cliente = new MAppointmentList();
-                cliente.ClienteID =  infoClientes[i].ClienteID;
-                cliente.ClienteNombre = infoClientes[i].ClienteNombre;
-                listaClientes.Add(cliente);
+                // Dropdown of clients
+                var infoClientes = WS.ListaClientes();
+                List<MAppointmentList> listaClientes = new List<MAppointmentList>();
+                for (int i = 0; i < infoClientes.Length; i++)
+                {
+                    MAppointmentList cliente = new MAppointmentList();
+                    cliente.ClienteID = infoClientes[i].ClienteID;
+                    cliente.ClienteNombre = infoClientes[i].ClienteNombre;
+                    listaClientes.Add(cliente);
+                }
+                ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
+                // Dropdown of doctors
+                var infoDoctores = WS.ListaDoctores();
+                List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+                for (int i = 0; i < infoDoctores.Length; i++)
+                {
+                    MAppointmentList doctor = new MAppointmentList();
+                    doctor.DoctorID = infoDoctores[i].DoctorID;
+                    doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                    listaDoctores.Add(doctor);
+                }
+                ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
+                return View();
             }
-            ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
-            // Dropdown of doctors
-            var infoDoctores = WS.ListaDoctores();
-            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
-            for (int i = 0; i < infoDoctores.Length; i++)
+            catch (System.ServiceModel.EndpointNotFoundException exception)
             {
-                MAppointmentList doctor = new MAppointmentList();
-                doctor.DoctorID = infoDoctores[i].DoctorID;
-                doctor.DoctorNombre= infoDoctores[i].DoctorNombre;
-                listaDoctores.Add(doctor);
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
             }
-            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
-            return View();
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
         
         //GET: NewAppointment
         [HttpPost]
         public ActionResult NewAppointment(MAppointmentList lista)
         {
-            // Dropdown of clients
-            var infoClientes = WS.ListaClientes();
-            List<MAppointmentList> listaClientes = new List<MAppointmentList>();
-            for (int i = 0; i < infoClientes.Length; i++)
+            try
             {
-                MAppointmentList cliente = new MAppointmentList();
-                cliente.ClienteID = infoClientes[i].ClienteID;
-                cliente.ClienteNombre = infoClientes[i].ClienteNombre;
-                listaClientes.Add(cliente);
-            }
-            ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
+                // Dropdown of clients
+                var infoClientes = WS.ListaClientes();
+                List<MAppointmentList> listaClientes = new List<MAppointmentList>();
+                for (int i = 0; i < infoClientes.Length; i++)
+                {
+                    MAppointmentList cliente = new MAppointmentList();
+                    cliente.ClienteID = infoClientes[i].ClienteID;
+                    cliente.ClienteNombre = infoClientes[i].ClienteNombre;
+                    listaClientes.Add(cliente);
+                }
+                ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
 
-            // Dropdown of doctors
-            var infoDoctores = WS.ListaDoctores();
-            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
-            for (int i = 0; i < infoDoctores.Length; i++)
-            {
-                MAppointmentList doctor = new MAppointmentList();
-                doctor.DoctorID = infoDoctores[i].DoctorID;
-                doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
-                listaDoctores.Add(doctor);
+                // Dropdown of doctors
+                var infoDoctores = WS.ListaDoctores();
+                List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+                for (int i = 0; i < infoDoctores.Length; i++)
+                {
+                    MAppointmentList doctor = new MAppointmentList();
+                    doctor.DoctorID = infoDoctores[i].DoctorID;
+                    doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                    listaDoctores.Add(doctor);
+                }
+                ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
+                DateTime FechaHora = lista.Fecha.Add(lista.Hora.TimeOfDay);
+                WS.NewAppointment(lista.ClienteID, lista.DoctorID, FechaHora.ToString(), lista.Detalles, lista.Comentarios);
+                TempData["message"] = "Cita creada exitosamente.";
+                return RedirectToAction("NewAppointment", "Appointment");
             }
-            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
-            DateTime FechaHora = lista.Fecha.Add(lista.Hora.TimeOfDay);
-            WS.NewAppointment(lista.ClienteID, lista.DoctorID, FechaHora.ToString(), lista.Detalles, lista.Comentarios);
-            TempData["message"] = "Cita creada exitosamente.";
-            return RedirectToAction("NewAppointment", "Appointment");
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
         /// <summary>
         /// Method to apply for appointment list
@@ -78,25 +104,38 @@ namespace PicadoDental.Controllers
         // GET: AppointmentList
         public ActionResult AppointmentList()
         {
-            var info = WS.CitaList();
-            List<MAppointmentList> list = new List<MAppointmentList>();
-            if(info [0] != null)
+            try
             {
-                for (int i = 0; i < info.Length; i++)
+                var info = WS.CitaList();
+                List<MAppointmentList> list = new List<MAppointmentList>();
+                if (info[0] != null)
                 {
-                    MAppointmentList model = new MAppointmentList();
-                    model.Fecha = info[i].Fecha;
-                    model.ClienteNombre = info[i].ClienteNombre;
-                    model.ClienteApellidos = info[i].ClienteApellidos;
-                    model.DoctorNombre = info[i].DoctorNombre;
-                    model.DoctorApellidos = info[i].DoctorApellidos;
-                    model.Detalles = info[i].Detalles;
-                    model.ClienteID = info[i].ClienteID;
-                    model.CitaID = info[i].CitaID;
-                    list.Add(model);
-                }  
+                    for (int i = 0; i < info.Length; i++)
+                    {
+                        MAppointmentList model = new MAppointmentList();
+                        model.Fecha = info[i].Fecha;
+                        model.ClienteNombre = info[i].ClienteNombre;
+                        model.ClienteApellidos = info[i].ClienteApellidos;
+                        model.DoctorNombre = info[i].DoctorNombre;
+                        model.DoctorApellidos = info[i].DoctorApellidos;
+                        model.Detalles = info[i].Detalles;
+                        model.ClienteID = info[i].ClienteID;
+                        model.CitaID = info[i].CitaID;
+                        list.Add(model);
+                    }
+                }
+                return View(list);
             }
-            return View(list);
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         /// <summary>
@@ -107,30 +146,43 @@ namespace PicadoDental.Controllers
         // GET: Appointment
         public ActionResult Appointment(int id)
         {
-            var info = WS.CitaListByID(id);
-            List<MAppointmentList> list = new List<MAppointmentList>();
-            if (info[0] != null)
+            try
+            {
+                var info = WS.CitaListByID(id);
+                List<MAppointmentList> list = new List<MAppointmentList>();
+                if (info[0] != null)
                 {
                     for (int i = 0; i < info.Length; i++)
                     {
-                    MAppointmentList model = new MAppointmentList();
-                    model.Fecha = info[i].Fecha;
-                    model.ClienteNombre = info[i].ClienteNombre;
-                    model.ClienteApellidos = info[i].ClienteApellidos;
-                    model.DoctorNombre = info[i].DoctorNombre;
-                    model.DoctorApellidos = info[i].DoctorApellidos;
-                    model.Detalles = info[i].Detalles;
-                    model.ClienteID = info[i].ClienteID;
-                    model.DoctorTelefono = info[i].DoctorTelefono;
-                    model.DoctorCorreo = info[i].DoctorCorreo;
-                    model.ClienteTelefono = info[i].ClienteTelefono;
-                    model.ClienteCorreo = info[i].ClienteCorreo;
-                    model.Comentarios = info[i].Comentarios;
-                    model.CitaID = info[i].CitaID;
-                    list.Add(model);
+                        MAppointmentList model = new MAppointmentList();
+                        model.Fecha = info[i].Fecha;
+                        model.ClienteNombre = info[i].ClienteNombre;
+                        model.ClienteApellidos = info[i].ClienteApellidos;
+                        model.DoctorNombre = info[i].DoctorNombre;
+                        model.DoctorApellidos = info[i].DoctorApellidos;
+                        model.Detalles = info[i].Detalles;
+                        model.ClienteID = info[i].ClienteID;
+                        model.DoctorTelefono = info[i].DoctorTelefono;
+                        model.DoctorCorreo = info[i].DoctorCorreo;
+                        model.ClienteTelefono = info[i].ClienteTelefono;
+                        model.ClienteCorreo = info[i].ClienteCorreo;
+                        model.Comentarios = info[i].Comentarios;
+                        model.CitaID = info[i].CitaID;
+                        list.Add(model);
                     }
+                }
+                return View(list);
             }
-            return View(list);
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
         /// <summary>
         /// View to change appointment information
@@ -140,19 +192,32 @@ namespace PicadoDental.Controllers
         // GET: UpdateAppointment
         public ActionResult UpdateAppointment(int id)
         {
-            ViewBag.ID = id;
-            // Dropdown of doctors
-            var infoDoctores = WS.ListaDoctores();
-            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
-            for (int i = 0; i < infoDoctores.Length; i++)
+            try
             {
-                MAppointmentList doctor = new MAppointmentList();
-                doctor.DoctorID = infoDoctores[i].DoctorID;
-                doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
-                listaDoctores.Add(doctor);
+                ViewBag.ID = id;
+                // Dropdown of doctors
+                var infoDoctores = WS.ListaDoctores();
+                List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+                for (int i = 0; i < infoDoctores.Length; i++)
+                {
+                    MAppointmentList doctor = new MAppointmentList();
+                    doctor.DoctorID = infoDoctores[i].DoctorID;
+                    doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                    listaDoctores.Add(doctor);
+                }
+                ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
+                return View();
             }
-            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
-            return View();
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
         /// <summary>
         /// Method to update information of an apointment 
@@ -164,21 +229,34 @@ namespace PicadoDental.Controllers
         [HttpPost]
         public ActionResult UpdateAppointment(int id, MAppointmentList cita)
         {
-            // Dropdown of doctors
-            var infoDoctores = WS.ListaDoctores();
-            List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
-            for (int i = 0; i < infoDoctores.Length; i++)
+            try
             {
-                MAppointmentList doctor = new MAppointmentList();
-                doctor.DoctorID = infoDoctores[i].DoctorID;
-                doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
-                listaDoctores.Add(doctor);
+                // Dropdown of doctors
+                var infoDoctores = WS.ListaDoctores();
+                List<MAppointmentList> listaDoctores = new List<MAppointmentList>();
+                for (int i = 0; i < infoDoctores.Length; i++)
+                {
+                    MAppointmentList doctor = new MAppointmentList();
+                    doctor.DoctorID = infoDoctores[i].DoctorID;
+                    doctor.DoctorNombre = infoDoctores[i].DoctorNombre;
+                    listaDoctores.Add(doctor);
+                }
+                ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
+                DateTime FechaHora = cita.Fecha.Add(cita.Hora.TimeOfDay);
+                WS.ModifyAppointment(id, cita.DoctorID + "", FechaHora + "", cita.Detalles, cita.Comentarios);
+                TempData["message"] = "Cita modificada exitosamente.";
+                return RedirectToAction("UpdateAppointment", "Appointment");
             }
-            ViewBag.Doctor = new SelectList(listaDoctores, "DoctorID", "DoctorNombre");
-            DateTime FechaHora = cita.Fecha.Add(cita.Hora.TimeOfDay);
-            WS.ModifyAppointment(id, cita.DoctorID + "", FechaHora + "", cita.Detalles, cita.Comentarios);
-            TempData["message"] = "Cita modificada exitosamente.";
-            return RedirectToAction("UpdateAppointment", "Appointment");
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
     }

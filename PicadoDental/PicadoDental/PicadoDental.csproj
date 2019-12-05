@@ -132,6 +132,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\InternalServerErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,6 +263,7 @@
     <Content Include="Views\Doctor\UpdateDoctor.cshtml" />
     <Content Include="Views\Doctor\AppointmentListOfDoctor.cshtml" />
     <Content Include="Views\Doctor\Doctor.cshtml" />
+    <Content Include="Views\InternalServerError\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

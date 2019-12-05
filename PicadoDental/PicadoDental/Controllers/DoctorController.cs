@@ -19,23 +19,36 @@ namespace PicadoDental.Controllers
         
         public ActionResult DoctorList()
         {
-            var info = WS.DoctorList();
-            List<MDoctor> list = new List<MDoctor>();
-            if (info[0] != null)
+            try
             {
-                for (int i = 0; i < info.Length; i++)
+                var info = WS.DoctorList();
+                List<MDoctor> list = new List<MDoctor>();
+                if (info[0] != null)
                 {
-                    MDoctor model = new MDoctor();
-                    model.PersonaID = info[i].PersonaID;
-                    model.Nombre = info[i].Nombre;
-                    model.Apellidos = info[i].Apellidos;
-                    model.Cedula = info[i].Cedula;
-                    model.Correo = info[i].Correo;
-                    model.Telefono = info[i].Telefono;
-                    list.Add(model);
+                    for (int i = 0; i < info.Length; i++)
+                    {
+                        MDoctor model = new MDoctor();
+                        model.PersonaID = info[i].PersonaID;
+                        model.Nombre = info[i].Nombre;
+                        model.Apellidos = info[i].Apellidos;
+                        model.Cedula = info[i].Cedula;
+                        model.Correo = info[i].Correo;
+                        model.Telefono = info[i].Telefono;
+                        list.Add(model);
+                    }
                 }
+                return View(list);
             }
-            return View(list);
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
       
         public ActionResult AddNewDoctor(
@@ -51,12 +64,25 @@ namespace PicadoDental.Controllers
             string confirmacion,
             int tipoCuentaID = 3)
         {
-            if (validacion(contrasena, confirmacion))
+            try
             {
-                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
-                TempData["message"] = "Doctor creado exitosamente.";
+                if (validacion(contrasena, confirmacion))
+                {
+                    WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+                    TempData["message"] = "Doctor creado exitosamente.";
+                }
+                return RedirectToAction("DoctorList", "Doctor");
             }
-            return RedirectToAction("DoctorList", "Doctor");
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
 
         }
 

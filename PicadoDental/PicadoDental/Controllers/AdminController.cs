@@ -33,15 +33,27 @@ namespace PicadoDental.Controllers
             string confirmacion,
             int tipoCuentaID = 1)
         {
-            if (validacion(contrasena, confirmacion))
+            try
             {
-                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+                if (validacion(contrasena, confirmacion))
+                {
+                    WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
 
-                TempData["message"] = "Administrador creado exitosamente.";
+                    TempData["message"] = "Administrador creado exitosamente.";
+                }
+
+                return RedirectToAction("NewAdmin", "Admin");
             }
-        
-
-            return RedirectToAction("NewAdmin", "Admin");
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
 
         public Boolean validacion (string contrasena, string confirmacion)
@@ -71,14 +83,26 @@ namespace PicadoDental.Controllers
             int tipoCuentaID = 2)
 
         {
-            if (validacion(contrasena, confirmacion))
+            try
             {
-                WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
-                TempData["message"] = "Secretario/a creado exitosamente.";
-            }
-                
+                if (validacion(contrasena, confirmacion))
+                {
+                    WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
+                    TempData["message"] = "Secretario/a creado exitosamente.";
+                }
 
-            return RedirectToAction("NewSecretary", "Admin");
+                return RedirectToAction("NewSecretary", "Admin");
+            }
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
         }
     }
 }
