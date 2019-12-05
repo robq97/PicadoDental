@@ -1,0 +1,52 @@
+﻿@model PicadoDental.Models.MDoctor
+
+@if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+{
+    {
+        ViewBag.Title = "UpdateDoctor/{id}";
+    }
+    if (TempData["message"] != null)
+    {
+        <body onload="alerta()">
+        </body>
+    }
+
+    <div class="container body-content green lighten-5">
+        <div style="margin-top: 5%" class="row">
+            <div class="col s12 card-panel center green darken-3 white-text">
+                <span class="card-title" style="font-size: 55px">Modificar Cliente</span>
+            </div>
+            @using (Html.BeginForm("UpdateDoctor", "Doctor", FormMethod.Post, new { @class = "", @style = "margin-top: 2%;" }))
+            {
+                <div class="row">
+                    <div class="row">
+                        <divc class="row">
+                            <div class="input-field col s9 offset-s1">
+                                <i class="material-icons prefix">assignment_ind</i>
+                                @Html.TextBoxFor(model => model.Correo, new { @class = "validate black-text", @type = "text", placeholder = "Correo:" })
+                                @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "validate black-text" })
+                            </div>
+                        </divc>
+                        <div class="row">
+                            <div class="input-field col s9 offset-s1">
+                                <i class="material-icons prefix">note</i>
+                                @Html.TextBoxFor(model => model.Telefono, new { @class = "validate black-text", @type = "text", placeholder = "Teléfono:" })
+                                @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "validate black-text" })
+                            </div>
+                        </div>
+                        <div class="center" style="margin-bottom: 5%">
+                            <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">
+                                Modificar
+                                <i class="material-icons right">mode_edit</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+@if (Session["TipoUsuario"] == null || Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Admin"))
+{
+    Response.Redirect("~/Home/Index");
+}

@@ -13,6 +13,7 @@ namespace PicadoDental.Models
         public String Telefono { get; set; }
         public int Cedula { get; set; }
         public int PersonaID { get; set; }
+        public String Genero { get; set; }
 
     }
 }

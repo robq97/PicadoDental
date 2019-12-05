@@ -36,10 +36,9 @@
                             <th>Cédula</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
-                            <th>Teléfono</th>
-                            <th>Correo</th>
+                            <th>Editar</th>
                             <th>Citas</th>
-                            <th>Modificar</th>
+                            <th>Detalles</th>
                         </tr>
                     </thead>
                     <tbody class="green lighten-5 black-text">
@@ -47,23 +46,26 @@
                         {
                             foreach (var p in Model)
                             {
-                                <tr class="clientTableCell">
-                                    <td>@p.Cedula</td>
-                                    <td>@p.Nombre</td>
-                                    <td>@p.Apellidos</td>
-                                    <td>@p.Telefono</td>
-                                    <td>@p.Correo</td>
-                                    <td>
-                                        <a class="btn-floating  green darken-3">
-                                            <i class="material-icons">details</i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="btn-floating  green darken-3">
-                                            <i class="material-icons">details</i>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tr class="clientTableCell">
+                                <td>@p.Cedula</td>
+                                <td>@p.Nombre</td>
+                                <td>@p.Apellidos</td>
+                                <td>
+                                    <a href="/Doctor/UpdateDoctor/@p.PersonaID" class="btn-floating  green darken-3">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Doctor/AppointmentListOfDoctor/@p.PersonaID" class="btn-floating  green darken-3">
+                                        <i class="material-icons right">format_list_bulleted</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Doctor/Doctor/@p.PersonaID" class="btn-floating  green darken-3">
+                                        <i class="material-icons">details</i>
+                                    </a>
+                                </td>
+                            </tr>
                             }
                         }
                     </tbody>

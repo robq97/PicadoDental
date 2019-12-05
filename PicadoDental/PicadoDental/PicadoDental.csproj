@@ -203,6 +203,12 @@
     <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.DoctorPOCO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ModifyDoctorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\EF_PicadoDental_WS\PicadoDental.EF_PicadoDental_WS.ObtenerInfoDoctorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\EF_PicadoDental_WS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -255,6 +261,9 @@
     <Content Include="Views\Client\UpdateClient.cshtml" />
     <Content Include="Views\Client\AppointmentListOfClient.cshtml" />
     <Content Include="Views\InternalServerError\Index.cshtml" />
+    <Content Include="Views\Doctor\UpdateDoctor.cshtml" />
+    <Content Include="Views\Doctor\AppointmentListOfDoctor.cshtml" />
+    <Content Include="Views\Doctor\Doctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

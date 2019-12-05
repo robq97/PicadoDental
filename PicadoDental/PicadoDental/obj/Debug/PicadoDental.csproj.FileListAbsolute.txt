@@ -146,7 +146,6 @@ C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bi
 C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csproj.CopyComplete
 C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.dll
 C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.pdb
-C:\Users\ftenoriom654\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\obj\Debug\PicadoDental.csprojAssemblyReference.cache
 C:\Users\robq9\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\PicadoDental.dll.config
 C:\Users\robq9\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\PicadoDental.dll
 C:\Users\robq9\Documents\GitHub\PicadoDental\PicadoDental\PicadoDental\bin\PicadoDental.pdb

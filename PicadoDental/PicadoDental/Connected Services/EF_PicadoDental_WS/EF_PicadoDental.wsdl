@@ -107,6 +107,36 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ObtenerInfoDoctor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerInfoDoctorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerInfoDoctorResult" type="tns:ArrayOfDoctorPOCO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDoctorPOCO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DoctorPOCO" nillable="true" type="tns:DoctorPOCO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DoctorPOCO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cedula" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="NewPerson">
         <s:complexType>
           <s:sequence>
@@ -158,21 +188,18 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfDoctorPOCO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="DoctorPOCO" nillable="true" type="tns:DoctorPOCO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="DoctorPOCO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Cedula" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PersonaID" type="s:int" />
-        </s:sequence>
-      </s:complexType>
+      <s:element name="ModifyDoctor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="personaId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDoctorResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="CitaListByID">
         <s:complexType>
           <s:sequence>
@@ -257,6 +284,12 @@
   <wsdl:message name="ObtenerInfoClienteSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerInfoClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerInfoDoctorSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoDoctor" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerInfoDoctorSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerInfoDoctorResponse" />
+  </wsdl:message>
   <wsdl:message name="NewPersonSoapIn">
     <wsdl:part name="parameters" element="tns:NewPerson" />
   </wsdl:message>
@@ -280,6 +313,12 @@
   </wsdl:message>
   <wsdl:message name="DoctorListSoapOut">
     <wsdl:part name="parameters" element="tns:DoctorListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDoctorSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyDoctor" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDoctorSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyDoctorResponse" />
   </wsdl:message>
   <wsdl:message name="CitaListByIDSoapIn">
     <wsdl:part name="parameters" element="tns:CitaListByID" />
@@ -326,6 +365,10 @@
       <wsdl:input message="tns:ObtenerInfoClienteSoapIn" />
       <wsdl:output message="tns:ObtenerInfoClienteSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoDoctor">
+      <wsdl:input message="tns:ObtenerInfoDoctorSoapIn" />
+      <wsdl:output message="tns:ObtenerInfoDoctorSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="NewPerson">
       <wsdl:input message="tns:NewPersonSoapIn" />
       <wsdl:output message="tns:NewPersonSoapOut" />
@@ -341,6 +384,10 @@
     <wsdl:operation name="DoctorList">
       <wsdl:input message="tns:DoctorListSoapIn" />
       <wsdl:output message="tns:DoctorListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDoctor">
+      <wsdl:input message="tns:ModifyDoctorSoapIn" />
+      <wsdl:output message="tns:ModifyDoctorSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CitaListByID">
       <wsdl:input message="tns:CitaListByIDSoapIn" />
@@ -406,6 +453,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoDoctor">
+      <soap:operation soapAction="http://tempuri.org/ObtenerInfoDoctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="NewPerson">
       <soap:operation soapAction="http://tempuri.org/NewPerson" style="document" />
       <wsdl:input>
@@ -435,6 +491,15 @@
     </wsdl:operation>
     <wsdl:operation name="DoctorList">
       <soap:operation soapAction="http://tempuri.org/DoctorList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDoctor">
+      <soap:operation soapAction="http://tempuri.org/ModifyDoctor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -526,6 +591,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerInfoDoctor">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerInfoDoctor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="NewPerson">
       <soap12:operation soapAction="http://tempuri.org/NewPerson" style="document" />
       <wsdl:input>
@@ -555,6 +629,15 @@
     </wsdl:operation>
     <wsdl:operation name="DoctorList">
       <soap12:operation soapAction="http://tempuri.org/DoctorList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDoctor">
+      <soap12:operation soapAction="http://tempuri.org/ModifyDoctor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
