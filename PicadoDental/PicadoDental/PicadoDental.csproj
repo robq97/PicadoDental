@@ -264,6 +264,10 @@
     <Content Include="Views\Doctor\AppointmentListOfDoctor.cshtml" />
     <Content Include="Views\Doctor\Doctor.cshtml" />
     <Content Include="Views\InternalServerError\Index.cshtml" />
+    <Content Include="Views\InternalServerError\Index.cshtml" />
+    <Content Include="Views\Doctor\UpdateDoctor.cshtml" />
+    <Content Include="Views\Doctor\AppointmentListOfDoctor.cshtml" />
+    <Content Include="Views\Doctor\Doctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
