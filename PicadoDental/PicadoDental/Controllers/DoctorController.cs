@@ -16,7 +16,10 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
-        
+        /// <summary>
+        /// Here we make the instance and we safe the information 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult DoctorList()
         {
             try
@@ -50,7 +53,21 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-      
+      /// <summary>
+      /// Method that we used to create a new doctor
+      /// </summary>
+      /// <param name="FirstName"></param>
+      /// <param name="LastName"></param>
+      /// <param name="SecondName"></param>
+      /// <param name="Id"></param>
+      /// <param name="Phone"></param>
+      /// <param name="Email"></param>
+      /// <param name="Gender"></param>
+      /// <param name="usuario"></param>
+      /// <param name="contrasena"></param>
+      /// <param name="confirmacion"></param>
+      /// <param name="tipoCuentaID"></param>
+      /// <returns></returns>
         public ActionResult AddNewDoctor(
             string FirstName,
             string LastName,
@@ -85,7 +102,11 @@ namespace PicadoDental.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Method to search a doctor by the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Doctor(int id)
         {
             var info = WS.ObtenerInfoDoctor(id);
@@ -107,6 +128,12 @@ namespace PicadoDental.Controllers
             }
             return View(list);
         }
+        /// <summary>
+        /// Method to verificate the Password
+        /// </summary>
+        /// <param name="contrasena"></param>
+        /// <param name="confirmacion"></param>
+        /// <returns></returns>
         public Boolean validacion(string contrasena, string confirmacion)
         {
             if (contrasena.Equals(confirmacion))
@@ -169,7 +196,12 @@ namespace PicadoDental.Controllers
             ViewBag.ID = id;
             return View();
         }
-
+        /// <summary>
+        /// Method to Update a doctor with their corresponding try and catch
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="doctor"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult UpdateDoctor(int id, MDoctor doctor)
         {

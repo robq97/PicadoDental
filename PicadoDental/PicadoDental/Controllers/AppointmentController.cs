@@ -51,7 +51,11 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-        
+        /// <summary>
+        /// Method to do a new appointment
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <returns></returns>
         //GET: NewAppointment
         [HttpPost]
         public ActionResult NewAppointment(MAppointmentList lista)

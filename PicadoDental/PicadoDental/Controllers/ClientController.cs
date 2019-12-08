@@ -11,7 +11,7 @@ namespace PicadoDental.Controllers
     public class ClientController : Controller
     {
         EF_PicadoDental_WS.EF_PicadoDentalSoapClient WS = new EF_PicadoDental_WS.EF_PicadoDentalSoapClient();
-
+       
         // GET: Cliente
         public ActionResult NewClient()
         {
@@ -75,7 +75,20 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-
+        /// <summary>
+        /// New Client Methot in where we add a new client
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="SecondName"></param>
+        /// <param name="Id"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Email"></param>
+        /// <param name="Gender"></param>
+        /// <param name="usuario"></param>
+        /// <param name="contrasena"></param>
+        /// <param name="tipoCuentaID"></param>
+        /// <returns></returns>
         public ActionResult AddNewClient(
             string FirstName,
             string LastName,
@@ -106,7 +119,10 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-
+        /// <summary>
+        /// List client Method in where we show the list of clients
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ClientList()
         {
             try
@@ -140,7 +156,11 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-
+        /// <summary>
+        /// Method in were we search clientw by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Client(int id)
         {
             try

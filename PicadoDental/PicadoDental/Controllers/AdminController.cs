@@ -14,12 +14,26 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
-
+        // GET: Secretary
         public ActionResult NewSecretary()
         {
             return View();
         }
-
+        /// <summary>
+        /// Method to add a new admin and also their corresponding  try and catch
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="SecondName"></param>
+        /// <param name="Id"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Email"></param>
+        /// <param name="Gender"></param>
+        /// <param name="usuario"></param>
+        /// <param name="contrasena"></param>
+        /// <param name="confirmacion"></param>
+        /// <param name="tipoCuentaID"></param>
+        /// <returns></returns>
         public ActionResult AddNewAdmin( 
             string FirstName,
             string LastName,
@@ -55,7 +69,12 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-
+        /// <summary>
+        /// Method to validate the password to have more confiability
+        /// </summary>
+        /// <param name="contrasena"></param>
+        /// <param name="confirmacion"></param>
+        /// <returns></returns>
         public Boolean validacion (string contrasena, string confirmacion)
         {
             if (contrasena.Equals(confirmacion))
@@ -68,7 +87,21 @@ namespace PicadoDental.Controllers
             }
             return false;
         }
-
+        /// <summary>
+        ///  Method to add a new Secretary and also their corresponding  try and catch
+        /// </summary>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="SecondName"></param>
+        /// <param name="Id"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Email"></param>
+        /// <param name="Gender"></param>
+        /// <param name="usuario"></param>
+        /// <param name="contrasena"></param>
+        /// <param name="confirmacion"></param>
+        /// <param name="tipoCuentaID"></param>
+        /// <returns></returns>
         public ActionResult AddNewSecretary(
             string FirstName,
             string LastName,

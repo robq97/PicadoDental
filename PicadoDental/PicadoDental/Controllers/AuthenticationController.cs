@@ -45,7 +45,12 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// Method to do the autenticationn of the users and passwords with their corresponding try and catch 
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public ActionResult Authentication(string usuario, string password)
         {
             try
