@@ -73,6 +73,7 @@ namespace PicadoDental.Controllers
                     else if (info[1] == "3")
                     {
                         Session["TipoUsuario"] = "Doctor";
+                        Session["PersonaID"] = info[0];
                         return RedirectToAction("NewAppointment", "Appointment");
                     }
                 }

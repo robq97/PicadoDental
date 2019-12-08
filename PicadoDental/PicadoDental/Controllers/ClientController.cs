@@ -244,11 +244,23 @@ namespace PicadoDental.Controllers
             }
         }
 
+        /// <summary>
+        /// View para actualizar cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult UpdateClient(int id)
         {
             ViewBag.ID = id;
             return View();
         }
+
+        /// <summary>
+        /// Actualiza info de cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult UpdateClient(int id, MCliente cliente)
         {

@@ -44,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody class="green lighten-5 black-text">
-                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
 
                         {
                             foreach (var p in Model)
@@ -55,12 +55,12 @@
                                     <td>@p.ClienteApellidos</td>
                                     <td>@p.DoctorNombre</td>
                                     <td>@p.DoctorApellidos</td>
-                                    <td>                                       
+                                    <td>
                                         <a href="/Appointment/Appointment/@p.CitaID" class="btn-floating  green darken-3">
-                                                <i class="material-icons">details</i>
+                                            <i class="material-icons">details</i>
                                         </a>
                                     </td>
-                                    <td>                                       
+                                    <td>
                                         <a href="/Appointment/UpdateAppointment/@p.CitaID" class="btn-floating  green darken-3">
                                             <i class="material-icons">mode_edit</i>
                                         </a>
@@ -68,7 +68,35 @@
                                 </tr>
                             }
                         }
-                        </tbody>
+                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Doctor"))
+
+                        {
+                            foreach (var p in Model)
+                            {
+                                if (Session["PersonaID"].ToString().Equals(p.DoctorID.ToString()))
+                                {
+                                    <tr class="clientTableCell">
+                                    <td>@p.Fecha</td>
+                                    <td>@p.ClienteNombre</td>
+                                    <td>@p.ClienteApellidos</td>
+                                    <td>@p.DoctorNombre</td>
+                                    <td>@p.DoctorApellidos</td>
+                                    <td>
+                                        <a href="/Appointment/Appointment/@p.CitaID" class="btn-floating  green darken-3">
+                                            <i class="material-icons">details</i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/Appointment/UpdateAppointment/@p.CitaID" class="btn-floating  green darken-3">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                }
+                                
+                            }
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>
