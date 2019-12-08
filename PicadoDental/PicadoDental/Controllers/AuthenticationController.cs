@@ -45,7 +45,12 @@ namespace PicadoDental.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// Method to do the autenticationn of the users and passwords with their corresponding try and catch 
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public ActionResult Authentication(string usuario, string password)
         {
             try
@@ -68,6 +73,7 @@ namespace PicadoDental.Controllers
                     else if (info[1] == "3")
                     {
                         Session["TipoUsuario"] = "Doctor";
+                        Session["PersonaID"] = info[0];
                         return RedirectToAction("NewAppointment", "Appointment");
                     }
                 }

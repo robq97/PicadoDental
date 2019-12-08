@@ -18,14 +18,14 @@
                         <divc class="row">
                             <div class="input-field col s9 offset-s1">
                                 <i class="material-icons prefix">assignment_ind</i>
-                                @Html.TextBoxFor(model => model.Correo, new { @class = "validate black-text", @type = "text", placeholder = "Correo:"})
+                                @Html.TextBoxFor(model => model.Correo, new { @class = "validate black-text", @type = "text", placeholder = "Correo:", maxlength = "50" })
                                 @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "validate black-text" })
                             </div>
                         </divc>
                         <div class="row">
                             <div class="input-field col s9 offset-s1">
                                 <i class="material-icons prefix">note</i>
-                                @Html.TextBoxFor(model => model.Telefono, new { @class = "validate black-text", @type = "text", placeholder = "Teléfono:"})
+                                @Html.TextBoxFor(model => model.Telefono, new { @class = "validate black-text", @type = "text", placeholder = "Teléfono:", pattern = "[0-9]{4}[0-9]{4}" })
                                 @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "validate black-text" })
                             </div>
                         </div>

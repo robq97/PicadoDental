@@ -22,17 +22,17 @@
                     <div class="row">
                         <div class="input-field col s3 offset-s1">
                             <i class="material-icons prefix">person</i>
-                            @Html.TextBoxFor(model => model.Nombre, new { @class = "validate black-text", @type = "text", placeholder = "Nombre:", required = "required" })
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "validate black-text", @type = "text", placeholder = "Nombre:", required = "required", maxlength = "50" })
                             @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "validate black-text" })
                         </div>
                         <div class="input-field col s3">
                             <i class="material-icons prefix">person</i>
-                            @Html.TextBoxFor(model => model.PrimerApellido, new { @class = "validate black-text", @type = "text", placeholder = "Primer apellido:", required = "required" })
+                            @Html.TextBoxFor(model => model.PrimerApellido, new { @class = "validate black-text", @type = "text", placeholder = "Primer apellido:", required = "required", maxlength = "50" })
                             @Html.ValidationMessageFor(model => model.PrimerApellido, "", new { @class = "validate black-text" })
                         </div>
                         <div class="input-field col s3">
                             <i class="material-icons prefix">person</i>
-                            @Html.TextBoxFor(model => model.SegundoApellido, new { @class = "validate black-text", @type = "text", placeholder = "Segundo apellido:", required = "required" })
+                            @Html.TextBoxFor(model => model.SegundoApellido, new { @class = "validate black-text", @type = "text", placeholder = "Segundo apellido:", required = "required", maxlength = "50" })
                             @Html.ValidationMessageFor(model => model.SegundoApellido, "", new { @class = "validate black-text" })
                         </div>
                         <div class="input-field col s5 offset-s1">
@@ -46,7 +46,7 @@
                             @Html.ValidationMessageFor(model => model.GeneroID, "", new { @class = "validate black-text" })
                         </div><div class="input-field col s5 offset-s1">
                             <i class="material-icons prefix">email</i>
-                            @Html.TextBoxFor(model => model.Correo, new { @class = "validate black-text", @type = "text", placeholder = "Correo:", required = "required" })
+                            @Html.TextBoxFor(model => model.Correo, new { @class = "validate black-text", @type = "text", placeholder = "Correo:", required = "required", maxlength = "50" })
                             @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "validate black-text" })
                         </div>
                         <div class="row">

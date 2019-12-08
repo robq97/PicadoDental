@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody class="green lighten-5 black-text">
-                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria") | Session["TipoUsuario"].ToString().Equals("Doctor"))
+                        @if (Session["TipoUsuario"] != null && Session["TipoUsuario"].ToString().Equals("Secretaria"))
                         {
                             foreach (var p in Model)
                             {

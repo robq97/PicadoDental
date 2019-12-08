@@ -51,7 +51,11 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
-        
+        /// <summary>
+        /// Method to do a new appointment
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <returns></returns>
         //GET: NewAppointment
         [HttpPost]
         public ActionResult NewAppointment(MAppointmentList lista)
@@ -97,6 +101,44 @@ namespace PicadoDental.Controllers
                 return RedirectToAction("Index", "InternalServerError");
             }
         }
+
+        //GET: NewAppointment
+        [HttpPost]
+        public ActionResult NewAppointmentForDoctor(MAppointmentList lista)
+        {
+            try
+            {
+                // Dropdown of clients
+                var infoClientes = WS.ListaClientes();
+                List<MAppointmentList> listaClientes = new List<MAppointmentList>();
+                for (int i = 0; i < infoClientes.Length; i++)
+                {
+                    MAppointmentList cliente = new MAppointmentList();
+                    cliente.ClienteID = infoClientes[i].ClienteID;
+                    cliente.ClienteNombre = infoClientes[i].ClienteNombre;
+                    listaClientes.Add(cliente);
+                }
+                ViewBag.Cliente = new SelectList(listaClientes, "ClienteID", "ClienteNombre");
+
+                // Dropdown of doctors
+                string doctorID = Session["PersonaID"].ToString();
+                int doctorIDConverted = Int32.Parse(doctorID);
+                DateTime FechaHora = lista.Fecha.Add(lista.Hora.TimeOfDay);
+                WS.NewAppointment(lista.ClienteID, doctorIDConverted, FechaHora.ToString(), lista.Detalles, lista.Comentarios);
+                TempData["message"] = "Cita creada exitosamente.";
+                return RedirectToAction("NewAppointment", "Appointment");
+            }
+            catch (System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+            catch (Exception exception)
+            {
+                Session["Error"] = exception.ToString();
+                return RedirectToAction("Index", "InternalServerError");
+            }
+        }
         /// <summary>
         /// Method to apply for appointment list
         /// </summary>
@@ -121,6 +163,7 @@ namespace PicadoDental.Controllers
                         model.Detalles = info[i].Detalles;
                         model.ClienteID = info[i].ClienteID;
                         model.CitaID = info[i].CitaID;
+                        model.DoctorID = info[i].DoctorID;
                         list.Add(model);
                     }
                 }

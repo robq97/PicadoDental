@@ -50,14 +50,14 @@
                             <divc class="row">
                                 <div class="input-field col s9 offset-s1">
                                     <i class="material-icons prefix">assignment_ind</i>
-                                    @Html.TextBoxFor(model => model.Detalles, new { @class = "validate black-text", @type = "text", placeholder = "Detalles:" })
+                                    @Html.TextBoxFor(model => model.Detalles, new { @class = "validate black-text", @type = "text", placeholder = "Detalles:", maxlength = "250" })
                                     @Html.ValidationMessageFor(model => model.Detalles, "", new { @class = "validate black-text" })
                                 </div>
                             </divc>
                             <div class="row">
                                 <div class="input-field col s9 offset-s1">
                                     <i class="material-icons prefix">note</i>
-                                    @Html.TextBoxFor(model => model.Comentarios, new { @class = "validate black-text", @type = "text", placeholder = "Comentarios:" })
+                                    @Html.TextBoxFor(model => model.Comentarios, new { @class = "validate black-text", @type = "text", placeholder = "Comentarios:", maxlength = "250" })
                                     @Html.ValidationMessageFor(model => model.Comentarios, "", new { @class = "validate black-text" })
                                 </div>
                             </div>
