@@ -123,6 +123,10 @@ namespace PicadoDental.Controllers
                     WS.NewPerson(FirstName, LastName, SecondName, Phone, Email, Convert.ToInt32(Gender), Id, tipoCuentaID, usuario, contrasena);
                     TempData["message"] = "Secretario/a creado exitosamente.";
                 }
+                else
+                {
+                    TempData["message"] = "Las contraseñas no coinciden.";
+                }
 
                 return RedirectToAction("NewSecretary", "Admin");
             }
